@@ -1,0 +1,31 @@
+{
+  "name": "reason-google-calender-clone",
+  "description": "",
+  "author": "mithereal",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack -w"
+  },
+  "dependencies": {
+    "bs-moment": "^0.3.1",
+    "bs-css": "^7.1.0",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "reason-react": ">=0.4.0",
+    "style-loader": "^0.22.1",
+    "url-loader": "^1.1.0"
+  },
+  "peerDependencies": {
+    "bs-platform": "^1.8.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.10"
+  }
+}

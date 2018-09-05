@@ -1,0 +1,35 @@
+{
+  "name": "reason-google-calender-clone",
+  "version": "0.1.0",
+  "reason": {"react-jsx" : 2},
+  "bsc-flags": [
+    "-bs-cross-module-opt"
+  ],
+
+  "package-specs": [
+    "commonjs"
+  ],
+
+  "sources": [
+    "src",
+    "app"
+  ]
+,
+
+  "package-specs": [{
+    "module": "es6",
+    "in-source": true
+  }],
+
+  "bs-dependencies": [
+    "reason-react",
+    "bs-css",
+    "bs-moment",
+  ],
+
+  "suffix": ".bs.js",
+  "namespace": true,
+  "refmt": 3
+
+
+}
