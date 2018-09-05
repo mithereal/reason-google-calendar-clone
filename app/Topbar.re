@@ -1,5 +1,3 @@
-
-
 let component = ReasonReact.statelessComponent("Topbar");
 
 let make = (_children) => {

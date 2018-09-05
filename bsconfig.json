@@ -25,6 +25,7 @@
     "reason-react",
     "bs-css",
     "bs-moment",
+    "bs-webapi",
   ],
 
   "suffix": ".bs.js",

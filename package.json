@@ -11,8 +11,9 @@
     "webpack": "webpack -w"
   },
   "dependencies": {
-    "bs-moment": "^0.3.1",
     "bs-css": "^7.1.0",
+    "bs-moment": "^0.3.1",
+    "bs-webapi": "^0.11.0",
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "react": "^16.2.0",
