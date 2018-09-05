@@ -4,7 +4,7 @@ A reason demo of google calendar
 
 ## Demo
 
-[React Google Calendar Clone](/)
+[Reason Google Calendar Clone](/)
 
 ## Running the Demo
 
