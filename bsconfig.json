@@ -26,6 +26,7 @@
     "bs-css",
     "bs-moment",
     "bs-webapi",
+    "bs-antd",
   ],
 
   "suffix": ".bs.js",
