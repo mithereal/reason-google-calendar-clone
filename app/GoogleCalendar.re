@@ -1,8 +1,10 @@
-open Webapi.Dom;
+open Webapi.Dom
 
-let window = Webapi.Dom.Document.asEventTarget(Webapi.Dom.window);
+open Shared
 
-let component = ReasonReact.reducerComponent("GoogleCalendar");
+let window = Webapi.Dom.Document.asEventTarget(Webapi.Dom.window)
+
+let component = ReasonReact.reducerComponent("GoogleCalendar")
 
 type action =
 | FETCH
@@ -26,12 +28,12 @@ let make = (_children) => {
  {
  self.send(FETCHEVENTS)
 },
-  render: ({state, send}) =>
+  render: (self) =>
 <WeekView
-        events=state.events
-        onNewEvent={this.addNewEvent}
-        onEventUpdate={this.updateEvent}
-        onEventDelete={this.deleteEvent}
+        events=self.state.events
+        onNewEvent=self.addNewEvent
+        onEventUpdate=self.updateEvent
+        onEventDelete=self.deleteEvent
       />
   };
   

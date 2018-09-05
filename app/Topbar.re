@@ -7,6 +7,6 @@ render: (_self) =>
       <a href="#">
 
       </a>
-       <span className=Styles.title> {ReasonReact.string("Calendar")} </span>
+       <span className=Styles.title> ( ReasonReact.string("Calendar") ) </span>
       </header>
 };
