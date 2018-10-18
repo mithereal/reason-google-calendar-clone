@@ -1,5 +1,5 @@
 const path = require('path');
-const outputDir = path.join(__dirname, "../../priv/static/");
+const outputDir = path.join(__dirname, "./example/");
 
 const isProd = process.env.NODE_ENV === 'production';
 
