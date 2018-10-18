@@ -1,57 +1,42 @@
+
+type action =
+| GOTONEXTWEEK
+| GOTOPREVIOUSWEEK
+| GOTOTODAY
+| ONOKADDEVENTMODAL(string)
+
+
+type state = {
+showEditEventModal: bool,
+startDate: string,
+showAddEventModal: bool
+}
+
+
 let component = ReasonReact.reducerComponent("WeekView");
 
-type ACTION =
-|
-
-let reducer = (action, _state) =>
-      switch(action) {
-
-      }
-
-let goToNextWeek () => {
-
-}
-
-let goToPreviousWeek () => {
-
-}
-
-let goToToday () => {
-
-}
-
-let openAddEventModal (dateStamp, tim) => {
-
-}
-
-let onCloseAddEventModal () => {
-
-}
-
-let onOkAddEventModal (title) => {
-
-}
-
-let onCurrentEventTimeChange (dates) => {
-
-}
-
-let make = ( _children) => {
+let make = (_children) => {
   ...component,
-  render: ({state,self}) => <div className="container">
-  <AddEventModal visible={showAddEventModal}
-                           onCancel=self.onCloseAddEventModal
-                           onClose=self.onCloseAddEventModal
-                           onOk=self.onOkAddEventModal
-                           eventStart=state.eventStart
-                           eventEnd=state.eventEnd
-                           onTimeChange=self.onCurrentEventTimeChange
-                           />
-  <WeekToolbar goToPreviousWeek=goToPreviousWeek
-                         goToNextWeek=self.goToNextWeek
-                         startDate=state.startDate
-                         goToToday=self.goToToday
-                         />
-  <WeekHeader weekDays=state.weekDays />
+  initialState:  () => {showEditEventModal: false, startDate: "", showAddEventModal: false},
+  reducer: (action, state) =>
+                 switch(action) {
+                 | GOTONEXTWEEK => ReasonReact.Update({...state, showEditEventModal: false})
+                 | GOTOPREVIOUSWEEK => ReasonReact.Update({...state, showEditEventModal: false})
+                 | GOTOTODAY => ReasonReact.Update({...state, showEditEventModal: false})
+                 | ONOKADDEVENTMODAL(title) => ReasonReact.Update({...state, showEditEventModal: false})
+                 },
+  render: ({state,send}) =>
+  <div className="container">
+
+  <AddEventModal
+
+   />
+
+  <WeekToolbar
+   appSend = send
+   />
+
+  <WeekHeader/>
+
    </div>
 };

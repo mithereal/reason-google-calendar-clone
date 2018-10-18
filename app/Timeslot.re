@@ -1,7 +1,14 @@
-let component = ReasonReact.statelessComponent("Timeslot");
+open Antd;
 
-let make = _children => {
-  ...component,
-  render:  (_self) =>
-<div> </div>
-  };
+let component = ReasonReact.statelessComponent("TimeSlot");
+
+
+let make = (~appSend, ~dateStamp: string, ~time: string, _children) => {
+...component,
+  render: (_self) =>
+    <Col
+
+
+
+    />
+}

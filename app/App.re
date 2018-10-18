@@ -24,7 +24,7 @@ let make = _children => {
   switch(self.state){
   | LOADING => <div className=Styles.app>
                 <Topbar />
-                <div className=Styles.loading> ( ReasonReact.string("Loading... ") ) </div>
+                <div > ( ReasonReact.string("Loading... ") ) </div>
                 <Footer />
                </div>
   | LOADED => <div className=Styles.app>
