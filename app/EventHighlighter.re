@@ -31,14 +31,37 @@ let make = (~event , ~startDate, ~endDate, _children) => {
   render:  ({state,send}) =>
 <div>
       <Fragment>
-
-           <br />
-          <span >
-
-
-
+ /* <AddEventModal
+          editMode={true}
+          eventTitle={this.props.event.title}
+          visible={showEditEventModal}
+          onCancel={this.deleteEvent}
+          onClose={this.closeModal}
+          onOk={this.updateEvent}
+          eventStart={eventNewStart}
+          eventEnd={eventNewEnd}
+          onTimeChange={this.onCurrentEventTimeChange}
+        />
+        <div
+          onClick={this.openEditEventModal}
+          style={{
+            ...generateWeekViewCoordinates (
+              this.props.event,
+              this.props.startDate
+            ),
+            ...eventHighlighter,
+          }}
+        >
+          {this.props.event.title} <br />
+          <span style={{fontSize: 10}}>
+            {moment (this.props.event.start).format ('hh:mm a')}
+            {' '}
+            -
+            {' '}
+            {moment (this.props.event.end).format ('hh:mm a')}
           </span>
-
+        </div>
+        */
       </Fragment>
       </div>
   };

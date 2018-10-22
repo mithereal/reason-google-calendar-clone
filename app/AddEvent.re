@@ -17,6 +17,14 @@ render:  ({state,send}) =>
         onChange=(_event => onTitleChange)
       />
 
+            <DatePicker
+
+              value=""
+              onChange=onTimeChange
+              showTime=""
+              format="MMM Do, YYYY hh:mm a"
+            />
+
     </Fragment>
 
 };
