@@ -12,6 +12,7 @@
     "webpack": "webpack -w"
   },
   "dependencies": {
+    "antd": "^3.5.3",
     "bs-antd": "0.0.2",
     "bs-css": "^7.1.0",
     "bs-moment": "^0.3.1",
@@ -23,9 +24,6 @@
     "reason-react": ">=0.4.0",
     "style-loader": "^0.22.1",
     "url-loader": "^1.1.0"
-  },
-  "peerDependencies": {
-    "bs-platform": "^1.8.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",

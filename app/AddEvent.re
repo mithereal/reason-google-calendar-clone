@@ -1,9 +1,9 @@
-
+open Antd;
 open Shared;
 
 let component = ReasonReact.statelessComponent("AddEvent");
 
-let make = (~appSend, ~title , ~start: string, ~eend: string, ~time: string, _children) => {
+let make = (~title , ~start: string, ~evtend: string,  ~onTitleChange, ~onTimeChange, _children) => {
 ...component,
 render:  ({state,send}) =>
     <Fragment>
@@ -14,7 +14,7 @@ render:  ({state,send}) =>
         value="title"
         style="inputStyles"
         size="large"
-        onChange=(_event => appSend(ONTITLECHANGE))
+        onChange=(_event => onTitleChange)
       />
 
     </Fragment>

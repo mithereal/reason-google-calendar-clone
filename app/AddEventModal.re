@@ -1,3 +1,4 @@
+open Antd;
 type target = {
 value: string
 }
@@ -8,37 +9,38 @@ e_start: string,
 e_end: string
 }
 
- type state = {
-    title: string,
-    visable: bool,
-    editMode: string
-  }
+type retainedProps = {title: string};
 
-  type action =
-  | HANDLETITLECHANGE(event)
-  | HANDLEOK
-  | HANDLECLOSE
-  | HANDLECANCEL
-  | HANDLETIMECHANGE
+let component = ReasonReact.statelessComponentWithRetainedProps("AddEventModal");
 
-  let component = ReasonReact.reducerComponent("AddEventModal");
-
-
-let reducer = (action, state) =>
- switch(action) {
- | HANDLETITLECHANGE(event) => ReasonReact.Update({...state, title: event.target.value})
- | HANDLEOK => ReasonReact.Update({...state, visable: false})
- | HANDLECLOSE => ReasonReact.Update({...state, visable: false})
- | HANDLECANCEL => ReasonReact.Update({...state, visable: false})
- | HANDLETIMECHANGE => ReasonReact.Update({...state, visable: false})
-}
-
-let make = ( _children ) => {
+let make = ( ~title, ~visible, ~onCancel, ~onClose, ~onOk, ~eventStart, ~eventEnd, ~onTimeChange, ~onTitleChange, _children ) => {
   ...component,
-  initialState: () => {title: "test", visable: false, editMode: "123"},
-  reducer,
+  retainedProps: {title: title},
+    didUpdate: ({oldSelf, newSelf}) =>
+      if (oldSelf.retainedProps.title !== newSelf.retainedProps.title) {
+        /* do whatever sneaky imperative things here */
+        Js.log("props `message` changed!")
+      },
   render:  ({state,send}) =>
-<div>
-
-</div>
+ <Modal
+        visible=visible
+        onOk=onOk
+        onCancel=onClose
+        footer={[
+          <Button key="back" onClick=onCancel >
+          /*  {this.props.editMode ? 'Delete' : 'Cancel'} */
+          </Button>,
+          <Button key="submit"  onClick=onOk>
+            /*  {this.props.editMode ? 'Update Event' : 'Add Event'} */
+          </Button>,
+        ]}
+      >
+        <AddEvent
+          title=title
+          start=eventStart
+          evtend=eventEnd
+          onTimeChange=onTimeChange
+          onTitleChange=onTitleChange
+        />
+      </Modal>
   };
