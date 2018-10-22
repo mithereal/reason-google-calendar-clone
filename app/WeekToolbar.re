@@ -1,4 +1,4 @@
-open Antd;
+
 open Shared;
 
 let component = ReasonReact.statelessComponent("WeekToolbar");
@@ -7,6 +7,8 @@ let make = (~appSend,  _children) => {
 
 ...component,
 render: (_self) =>
+<div>
+/*
  <Row type_="flex" gutter=4 style="toolbar">
       <Col span=6 offset=3 style="appTitle">
         <Icon type_="calendar" style="spacify" />( ReasonReact.string("Meeting Calendar") )
@@ -28,6 +30,8 @@ render: (_self) =>
       </Col>
 
     </Row>
+*/
+</div>
 }
 
 

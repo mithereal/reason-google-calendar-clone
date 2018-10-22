@@ -1,4 +1,4 @@
-open Antd;
+
 open Shared;
 
 let component = ReasonReact.statelessComponent("AddEvent");

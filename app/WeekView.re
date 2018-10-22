@@ -32,11 +32,12 @@ let make = (_children) => {
 
    />
 
-  <WeekToolbar
+ /*
+ <WeekToolbar
    appSend = send
    />
 
   <WeekHeader/>
-
+*/
    </div>
 };

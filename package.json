@@ -8,6 +8,7 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "webpack-dev-server",
     "webpack": "webpack -w"
   },
   "dependencies": {
@@ -27,6 +28,9 @@
     "bs-platform": "^1.8.0"
   },
   "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "bs-platform": "^4.0.5",
+    "bsb-js": "^1.1.7",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.10"
   }

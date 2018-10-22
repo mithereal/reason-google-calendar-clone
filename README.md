@@ -4,7 +4,7 @@ A reason demo of google calendar
 
 ## Demo
 
-[Reason Google Calendar Clone](/)
+[Try it Here](example/index.html)
 
 ## Running the Demo
 
@@ -24,3 +24,6 @@ A reason demo of google calendar
 ## Contributing
 
 In case of bug or feature request, feel free to file an issue.
+
+
+

@@ -15,10 +15,12 @@
   ]
 ,
 
-  "package-specs": [{
+  "package-specs": [
+  {
     "module": "es6",
     "in-source": true
-  }],
+  }
+  ],
 
   "bs-dependencies": [
     "reason-react",
@@ -29,7 +31,7 @@
   ],
 
   "suffix": ".bs.js",
-  "namespace": true,
+  "namespace": false,
   "refmt": 3
 
 
