@@ -9,23 +9,23 @@ let make = (~goToPreviousWeek, ~goToNextWeek, ~startDate, ~goToToday, _children)
 render: (_self) =>
 <div>
 
- <Row type_="flex" gutter=4 style="toolbar">
-      <Col span=6 offset=3 style="appTitle">
-        <Icon type_="calendar" style="spacify" />( ReasonReact.string("Meeting Calendar") )
+ <Row type_="flex" gutter=4 >
+      <Col span=6 offset=3 >
+        <Icon type_="calendar"  />( ReasonReact.string("Meeting Calendar") )
       </Col>
-      <Col span=3 offset=8 style="alignRight">
+      <Col span=3 offset=8 >
         <Tooltip placement="topLeft" >
-          <Button onClick=(_event => goToToday)>( ReasonReact.string("Today") )</Button>
+          <Button >( ReasonReact.string("Today") )</Button>
         </Tooltip>
       </Col>
 
-      <Col span=2 style="weekButtons">
-        <Button  onClick=(_event => goToToday)
-        style="spacify" icon="left" />
-        <Button onClick=(_event => goToNextWeek) />
+      <Col span=2 >
+        <Button
+         icon="left" />
+        <Button />
       </Col>
 
-      <Col span=2 style="toolbarDate">
+      <Col span=2 >
 /*      formattedDate   */
       </Col>
 

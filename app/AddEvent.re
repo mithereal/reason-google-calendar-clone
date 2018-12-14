@@ -12,7 +12,7 @@ render:  ({state,send}) =>
         type_="text"
         placeholder="Add Title"
         value="title"
-        style="inputStyles"
+
         size="large"
         onChange=(_event => onTitleChange)
       />

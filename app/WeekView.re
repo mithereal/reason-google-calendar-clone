@@ -35,21 +35,12 @@ let make = (_children) => {
   <div className="container">
     <WeekHeader weekDays="" />
 
-    <AddEventModal           title=""
-                            visible=state.showAddEventModal
-                             onCancel=send(ONCLOSEADDEVENTMODAL)
-                             onClose=send(ONCLOSEADDEVENTMODAL)
-                             onOk=send(ONOKADDEVENTMODAL("x"))
-                             eventStart=state.eventStart
-                             eventEnd=state.eventEnd
-                             onTimeChange=send(ONCURRENTEVENTTIMECHANGE)
-                             onTitleChange=send(ONCURRENTEVENTTIMECHANGE)
-                             />
 
-    <WeekToolbar           goToPreviousWeek=send(GOTOPREVIOUSWEEK)
-                           goToNextWeek=send(GOTONEXTWEEK)
-                           startDate=state.startDate
-                           goToToday=send(GOTOTODAY)
+
+    <WeekToolbar           goToPreviousWeek=""
+                           goToNextWeek=""
+                           startDate=""
+                           goToToday=""
                            />
 
 
