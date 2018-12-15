@@ -1,6 +1,8 @@
 const path = require('path');
 const outputDir = path.join(__dirname, "./example/");
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const isProd = process.env.NODE_ENV === 'production';
 
 module: {
@@ -24,4 +26,9 @@ module.exports = {
     publicPath: outputDir,
     filename: 'index.js',
   },
+    module: {
+        rules: [
+            { test: /\.css$/, use: 'css-loader' }
+        ]
+    }
 };
