@@ -1,9 +1,10 @@
 open Antd;
-open Shared;
+open Util;
+open WeekShared;
 
 let component = ReasonReact.statelessComponent("AddEvent");
 
-let make = (~title , ~start: string, ~evtend: string,  ~onTitleChange, ~onTimeChange, _children) => {
+let make = (~title , ~start: string, ~evtend: string,  ~appSend, _children) => {
 ...component,
 render:  ({state,send}) =>
     <Fragment>
@@ -12,15 +13,16 @@ render:  ({state,send}) =>
         type_="text"
         placeholder="Add Title"
         value="title"
-
+        /* style={ Styles.inputStyles } */
         size="large"
-        onChange=(_event => onTitleChange)
+       /* autoFocus={true} */
+        onChange=(_event => appSend(ONTITLECHANGE))
       />
 
             <DatePicker
-
+           /*    style={ Styles.dateStyles } */
               value=""
-              onChange=onTimeChange
+              onChange=""
               showTime=""
               format="MMM Do, YYYY hh:mm a"
             />

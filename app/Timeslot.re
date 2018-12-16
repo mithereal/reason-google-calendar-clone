@@ -3,14 +3,14 @@ open Antd;
 let component = ReasonReact.statelessComponent("TimeSlot");
 
 
-let make = (~appSend, ~dateStamp: string, ~time: string, _children) => {
+let make = (~openevt, ~dateStamp: string, ~time: string, _children) => {
 ...component,
   render: (_self) =>
     <Col
 
-       /* key_=dateStamp */
+       key=dateStamp
       span="3"
-     /*  onClick=(_event => appSend(OPENADDEVENTMODAL(dateStamp, time))) */
+    /* onClick=(_event => openevt(dateStamp, time)) */
 
     />
 }

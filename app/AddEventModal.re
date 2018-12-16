@@ -1,4 +1,6 @@
 open Antd;
+open WeekShared
+
 type target = {
 value: string
 }
@@ -13,7 +15,7 @@ type retainedProps = {title: string};
 
 let component = ReasonReact.statelessComponentWithRetainedProps("AddEventModal");
 
-let make = ( ~title, ~visible, ~onCancel, ~onClose, ~onOk, ~eventStart, ~eventEnd, ~onTimeChange, ~onTitleChange, _children ) => {
+let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, _children ) => {
   ...component,
   retainedProps: {title: title},
     didUpdate: ({oldSelf, newSelf}) =>
@@ -24,13 +26,13 @@ let make = ( ~title, ~visible, ~onCancel, ~onClose, ~onOk, ~eventStart, ~eventEn
   render:  ({state,send}) =>
  <Modal
         visible=visible
-        onOk=onOk
-        onCancel=onClose
+        onOk=(_event => appSend(ONCLOSEADDEVENTMODAL))
+        onCancel=(_event => appSend(ONCLOSEADDEVENTMODAL))
         footer={[
-          <Button key="back" onClick=onCancel >
+          <Button key="back" onClick=(_event => appSend(ONCLOSEADDEVENTMODAL)) >
           /*  {this.props.editMode ? 'Delete' : 'Cancel'} */
           </Button>,
-          <Button key="submit"  onClick=onOk>
+          <Button key="submit"  onClick=(_event => appSend(ONOKADDEVENTMODAL("x")))>
             /*  {this.props.editMode ? 'Update Event' : 'Add Event'} */
           </Button>,
         ]}
@@ -39,8 +41,7 @@ let make = ( ~title, ~visible, ~onCancel, ~onClose, ~onOk, ~eventStart, ~eventEn
           title=title
           start=eventStart
           evtend=eventEnd
-          onTimeChange=onTimeChange
-          onTitleChange=onTitleChange
+          appSend=appSend
         />
       </Modal>
   };
