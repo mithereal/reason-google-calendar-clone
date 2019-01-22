@@ -19,24 +19,28 @@ let m = moment()
 
 let currentDate = m.clone()
 
-let weekStart = currentDate.startOf('week')
+let weekStart = currentDate.startOf("week")
 
 let days_list = [0,1,2,3,4,5,6]
 
  let days = List.mapi((index: int, d: int) =>
- let week = moment(weekStart)
- let day = week.add(d, 'days')
- day.set('minutes', 0)
- day.set('seconds', 0)
- day
- ,
- days_list
- )
+ {
+ let week = moment(weekStart);
+ let day = week.add(d, "days");
+ day.set("minutes", 0);
+ day.set("seconds", 0);
 
-let weeks = List.mapi((index: int, d: int) =>
+ day
+}, days_list
+ ) ;
+
+
+let weeks = List.mapi((index: int, d: int) => {
+
+}
 ,
 days
-)
+);
 
 weeks
 };
