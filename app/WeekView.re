@@ -1,11 +1,12 @@
 open WeekShared
+open Util
 
 
 let component = ReasonReact.reducerComponent("WeekView");
 
 let make = (_children) => {
   ...component,
-  initialState:  () => {startDate: "", weekDays: "", showAddEventModal: false, eventStart: "", eventEnd: ""},
+  initialState:  () => {startDate: "", weekDays: getAllDaysInTheWeek(), showAddEventModal: false, eventStart: "", eventEnd: ""},
   reducer: reducer,
   render: ({state,send}) =>
   <div className="container">

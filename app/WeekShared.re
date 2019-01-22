@@ -10,7 +10,7 @@ type action =
 
 type state = {
 startDate: string,
-weekDays: string,
+weekDays: list(MomentRe.Moment.t),
 showAddEventModal: bool,
 eventStart: string,
 eventEnd: string,
