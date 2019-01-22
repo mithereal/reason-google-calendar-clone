@@ -86,3 +86,7 @@ let return = switch(today == dateStamp){
 return;
 
 }
+
+let dayname = (m) => {
+MomentRe.Moment.format("dddd", m);
+}

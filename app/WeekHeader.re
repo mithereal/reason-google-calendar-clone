@@ -17,7 +17,7 @@ render: (_self) =>
                             span=3 >
                             <p>
                             (
-                            ReasonReact.string(MomentRe.Moment.format("dddd",m))
+                            ReasonReact.string(Util.dayname(m))
                             )
                             </p>
                             <p></p>
