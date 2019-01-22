@@ -11,10 +11,15 @@ render: (_self) =>
                    Array.of_list(
                       List.mapi(
                         (index: int, m: MomentRe.Moment.t) =>
+
                          <Col
                             key=(string_of_int(index))
                             span=3 >
-                            <p></p>
+                            <p>
+                            (
+                            ReasonReact.string(MomentRe.Moment.format("dddd",m))
+                            )
+                            </p>
                             <p></p>
                          </Col>
 

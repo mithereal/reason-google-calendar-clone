@@ -7,7 +7,7 @@ let component = ReasonReact.statelessComponent("AddEvent");
 let make = (~title , ~start: string, ~evtend: string,  ~appSend, _children) => {
 ...component,
 render:  ({state,send}) =>
-    <Fragment>
+    <>
 
       <Input
         type_="text"
@@ -27,6 +27,6 @@ render:  ({state,send}) =>
               format="MMM Do, YYYY hh:mm a"
             />
 
-    </Fragment>
+    </>
 
 };
