@@ -13,36 +13,29 @@ e_start: string,
 e_end: string
 }
 
-let getAllDaysInTheWeek = () => {
+let days_list = [0,1,2,3,4,5,6];
 
-let m = moment("m-d-y");
+let getAllDaysInTheWeek = (currentDate) => {
 
-let currentDate = Moment.clone(m)
-
-let weekStart = Moment.startOf(`week,currentDate)
-
-let days_list = [0,1,2,3,4,5,6]
+let m = switch(currentDate){
+| _ => momentNow()
+}
 
  let days = List.mapi((index: int, d: int) =>
  {
+ let day = Moment.startOf(`week, m);
  let duration = duration(d,`days);
- Moment.mutableAdd(weekStart, duration);
- Moment.setMinute(0,weekStart);
- Moment.setHour(0,weekStart);
 
- d
+ Moment.mutableAdd(day, duration);
+ Moment.setMinute(0,day);
+ Moment.setHour(0,day);
+
+ day
 }, days_list
  ) ;
 
 
-let weeks = List.mapi((index: int, d: int) => {
-
-}
-,
 days
-);
-
-weeks
 };
 
 let generateWeekViewCoordinates = (event, startDate) => {
@@ -51,10 +44,38 @@ let start = moment(event.e_start)
 let evtend = moment(event.e_end)
 let diff = diff(evtend, start)
 let total_duration = duration(2)
+
 let weekStart = moment(startDate)
 
+ let timeFactor = 5;
+
+ let top = "50%";
+ let left = timeFactor * 100;
+ let height = timeFactor * 100;
+ let width = timeFactor * 100;
+
+  let coordinate = .{
+      top: top,
+      left: left,
+      height: height,
+      width: width
+      };
+
+coordinate;
 
 }
 
 let isTodaysDate = (dateStamp) => {
+
+let today = momentNow();
+let dateStamp = moment(dateStamp);
+let ddiff = diff(today, dateStamp);
+let dur = duration(0, `days);
+let return = switch(today == dateStamp){
+             | true => true
+             | _ => false
+}
+
+return;
+
 }
