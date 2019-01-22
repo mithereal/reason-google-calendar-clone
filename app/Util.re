@@ -13,6 +13,13 @@ e_start: string,
 e_end: string
 }
 
+type coordinate = {
+top: string,
+left: string,
+height: string,
+width: string
+}
+
 let days_list = [0,1,2,3,4,5,6];
 
 let getAllDaysInTheWeek = (currentDate) => {
@@ -50,11 +57,11 @@ let weekStart = moment(startDate)
  let timeFactor = 5;
 
  let top = "50%";
- let left = timeFactor * 100;
- let height = timeFactor * 100;
- let width = timeFactor * 100;
+ let left = "50%";
+ let height = "50%";
+ let width = "50%";
 
-  let coordinate = .{
+  let coordinate:coordinate = {
       top: top,
       left: left,
       height: height,
