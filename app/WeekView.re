@@ -6,7 +6,7 @@ let component = ReasonReact.reducerComponent("WeekView");
 
 let make = (_children) => {
   ...component,
-  initialState:  () => {startDate: "", weekDays: getAllDaysInTheWeek(), showAddEventModal: false, eventStart: "", eventEnd: ""},
+  initialState:  () => {startDate: weekstart(MomentRe.momentNow()), weekDays: getAllDaysInTheWeek(MomentRe.momentNow()), showAddEventModal: false, eventStart: "", eventEnd: ""},
   reducer: reducer,
   render: ({state,send}) =>
   <div className="container">
@@ -19,7 +19,7 @@ let make = (_children) => {
                              appSend=send
                              />
 
-    <WeekToolbar appSend=send />
+    <WeekToolbar appSend=send formattedDate = Util.monthyear(state.startDate) />
 
     <WeekHeader weekDays=state.weekDays />
 

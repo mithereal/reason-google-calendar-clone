@@ -24,13 +24,9 @@ let days_list = [0,1,2,3,4,5,6];
 
 let getAllDaysInTheWeek = (currentDate) => {
 
-let m = switch(currentDate){
-| _ => momentNow()
-}
-
  let days = List.mapi((index: int, d: int) =>
  {
- let day = Moment.startOf(`week, m);
+ let day = Moment.startOf(`week, currentDate);
  let duration = duration(d,`days);
 
  Moment.mutableAdd(day, duration);
@@ -87,9 +83,22 @@ return;
 
 }
 
+let daynumber = (m) => {
+MomentRe.Moment.format("d", m);
+}
+
 let dayname = (m) => {
 MomentRe.Moment.format("dddd", m);
 }
+
 let daydate = (m) => {
 MomentRe.Moment.format("Do", m);
+}
+
+let monthyear = (m) => {
+MomentRe.Moment.format("MMM YYYY", m);
+}
+
+let weekstart = (m) => {
+Moment.startOf(`week, m);
 }

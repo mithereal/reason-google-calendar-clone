@@ -4,12 +4,9 @@ open WeekShared;
 
 let component = ReasonReact.statelessComponent("WeekToolbar");
 
-let make = (~appSend, _children) => {
+let make = (~appSend, ~formattedDate, _children) => {
 
 ...component,
-didMount: self => {
-let formattedDate = "test"
-},
 render: (_self) =>
 
 <div>
@@ -25,13 +22,17 @@ render: (_self) =>
 
       <Col span=2 >
         <Button
-         icon="left"   />
-        <Button onClick=(_event => appSend(GOTONEXTWEEK)) />
+         icon="left"
+          onClick=(_event => appSend(GOTOPREVIOUSWEEK))
+         />
+        <Button
+        icon="right"
+        onClick=(_event => appSend(GOTONEXTWEEK))
+        />
       </Col>
 
       <Col span=2 >
-      ( ReasonReact.string("12-15-2018") )
-/*      formattedDate   */
+      ( ReasonReact.string(formattedDate) )
       </Col>
 
     </Row>
