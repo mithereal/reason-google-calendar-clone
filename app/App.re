@@ -22,15 +22,15 @@ let make = _children => {
     },
   render: (self) =>
   switch(self.state){
-  | LOADING => <div className=Styles.app>
-                <Topbar />
-                <div > ( ReasonReact.string("Loading... ") ) </div>
-                <Footer />
-               </div>
-  | LOADED => <div className=Styles.app>
-                <Topbar />
+  | LOADING => <>
+                <PageHeader />
+                <div> ( ReasonReact.string("Loading... ") ) </div>
+                <PageFooter />
+               </>
+  | LOADED => <>
+                <PageHeader />
                 <GoogleCalendar />
-                <Footer />
-               </div>
+                <PageFooter />
+               </>
   }
 };
