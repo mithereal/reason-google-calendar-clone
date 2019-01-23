@@ -17,23 +17,7 @@ render: (_self) =>
         </span>
       </Col>
 
-      (
-                      ReasonReact.array(
-                         Array.of_list(
-                            List.mapi(
-                              (index: int, t: int) =>
 
-                                        <Timeslot
-                                                  key="5"
-                                                  time=""
-                                                  appSend=appSend
-                                                />
-                               ,
-                             children
-                           ),
-                       ),
-                     )
-         )
 
 
     </Row>

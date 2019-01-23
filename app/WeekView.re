@@ -4,6 +4,8 @@ open Util
 
 let component = ReasonReact.reducerComponent("WeekView");
 
+let events=[1,2,3];
+
 let make = (_children) => {
   ...component,
   initialState:  () => {startDate: weekstart(MomentRe.momentNow()), weekDays: getAllDaysInTheWeek(MomentRe.momentNow()), showAddEventModal: false, eventStart: "", eventEnd: ""},
@@ -34,7 +36,9 @@ let make = (_children) => {
                                     time = t
                                     weekDays = state.weekDays
                                     appSend= send
-                                  />
+                                  >
+
+                                  </TimeSlotGroup>
                          ,
                        Util.times,
                      ),
