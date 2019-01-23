@@ -20,7 +20,11 @@ render: (_self) =>
                             ReasonReact.string(Util.dayname(m))
                             )
                             </p>
-                            <p></p>
+                            <p>
+                            (
+                            ReasonReact.string(Util.daydate(m))
+                            )
+                            </p>
                          </Col>
 
                          ,

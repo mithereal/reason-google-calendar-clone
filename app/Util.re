@@ -90,3 +90,6 @@ return;
 let dayname = (m) => {
 MomentRe.Moment.format("dddd", m);
 }
+let daydate = (m) => {
+MomentRe.Moment.format("Do", m);
+}
