@@ -23,6 +23,25 @@ let make = (_children) => {
 
     <WeekHeader weekDays=state.weekDays />
 
+(
+                ReasonReact.array(
+                   Array.of_list(
+                      List.mapi(
+                        (index: int, t: int) =>
+
+                         <TimeSlotGroup
+                                    key = (string_of_int(index))
+                                    time = t
+                                    weekDays = state.weekDays
+                                    appSend= send
+                                  />
+                         ,
+                       Util.times,
+                     ),
+                 ),
+               )
+            )
+
 
    </div>
 };
