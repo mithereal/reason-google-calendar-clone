@@ -20,7 +20,7 @@ render:  ({state,send}) =>
       />
 
             <DatePicker
-           /*    style={ Styles.dateStyles } */
+               style={ Styles.dateStyles }
               value=""
               onChange=""
               showTime=""
