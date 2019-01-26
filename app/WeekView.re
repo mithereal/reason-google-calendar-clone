@@ -35,8 +35,9 @@ let make = (_children) => {
                                     key = (string_of_int(index))
                                     time = t
                                     weekDays = state.weekDays
-                                    appSend= send
+                                    appSend=send
                                   >
+
 
                                   </TimeSlotGroup>
                          ,

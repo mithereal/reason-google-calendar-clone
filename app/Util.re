@@ -102,3 +102,7 @@ MomentRe.Moment.format("MMM YYYY", m);
 let weekstart = (m) => {
 Moment.startOf(`week, m);
 }
+
+let openAddEventModal = () => {
+
+}

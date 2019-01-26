@@ -6,6 +6,7 @@ type action =
 | ONCLOSEADDEVENTMODAL
 | ONCURRENTEVENTTIMECHANGE
 | ONTITLECHANGE
+| ONOPENADDEVENTMODAL
 
 
 type state = {
@@ -40,4 +41,5 @@ let reducer = (action, state) =>
                                      let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day));
                      ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
                      | ONOKADDEVENTMODAL(title) => ReasonReact.Update({...state, showAddEventModal: false})
+                     | ONOPENADDEVENTMODAL => ReasonReact.Update({...state, showAddEventModal: true})
                      };
