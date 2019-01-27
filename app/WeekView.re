@@ -50,7 +50,7 @@ switch(state.current_event){
                                   >
 
 
-       ( state.events )
+       ( 0 )
 
                                   </TimeSlotGroup>
                          ,

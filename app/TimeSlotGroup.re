@@ -21,17 +21,13 @@ render: (_self) =>
                       ReasonReact.array(
 
                             Array.mapi(
-                              (index: int, t: events) =>
+                              (index: int, t: int) =>
 
-                              switch(t){
-                              | Some(x) =>   List.mapi((idx:int, item) =>
-                                                                <Timeslot
-                                                                 key=string_of_int(idx)
-                                                                 time=item.eventStart
-                                                                 appSend=appSend
-                                                                />, x)
-                                | None => None
-                              }
+                              <Timeslot
+                                      key="5"
+                                      time="5"
+                                      appSend=appSend
+                              />
                                ,
                             Util.getEventsinRange(children)
                            ),
