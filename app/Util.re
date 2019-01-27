@@ -1,7 +1,7 @@
 open MomentRe;
 open Duration;
 
-let times = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ];
+let times = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 
 type target = {
 value: string
@@ -103,6 +103,17 @@ let weekstart = (m) => {
 Moment.startOf(`week, m);
 }
 
-let openAddEventModal = () => {
+let addTimeSuffix = (time) => {
+switch(time > 11){
+| true => switch(time == 12){
+        | true => string_of_int(time) ++ "pm"
+         | _ => let ct = time - 12;
+                    string_of_int(ct) ++ "am"
+            }
+| _ => string_of_int(time) ++ "am"
+}
+}
 
+let getEventsinRange = (e) => {
+e
 }

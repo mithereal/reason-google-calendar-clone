@@ -1,19 +1,19 @@
 open Webapi.Dom;
 
 open Shared;
-
-
+open WeekShared;
 
 type action =
-| FETCH
-| GENERATE
-| ADD
-| DELETE
-| UPDATE
+| WEEKLY
+
+type state = {
+view: action
+}
+
 
 let reducer = (action, state) =>
       switch(action) {
-     | FETCH => ReasonReact.Update({...state, events: [||]})
+     | WEEKLY => ReasonReact.Update({...state, view: WEEKLY})
       }
 
 let component = ReasonReact.reducerComponent("GoogleCalendar")
@@ -21,15 +21,15 @@ let component = ReasonReact.reducerComponent("GoogleCalendar")
 let make = (_children) => {
 
   ...component,
-   initialState: () => {events: [||]},
+   initialState: () => {view: WEEKLY},
   reducer,
-   didMount: (self) =>
- {
- self.send(FETCH)
-},
   render: (self) =>
-<>
-<WeekView />
-</>
+
+(
+switch(self.state.view){
+| _ => <WeekView appSend = self.send startDate = MomentRe.momentNow() />
+}
+)
+
   };
 

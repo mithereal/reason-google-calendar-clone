@@ -3,7 +3,7 @@ open WeekShared;
 let component = ReasonReact.statelessComponent("TimeSlotGroup");
 
 
-let make = (~appSend, ~weekDays, ~time, children) => {
+let make = (~appSend, ~weekDays, ~time,  children) => {
 ...component,
 render: (_self) =>
 <div onClick=(_event => appSend(ONOPENADDEVENTMODAL))>
@@ -11,7 +11,7 @@ render: (_self) =>
       <Col className=Styles.timeCol span="3">
         <span className=Styles.timeString>
          (
-         ReasonReact.string(string_of_int(time))
+         ReasonReact.string(Util.addTimeSuffix(time))
          )
         </span>
 
@@ -21,15 +21,19 @@ render: (_self) =>
                       ReasonReact.array(
 
                             Array.mapi(
-                              (index: int, t: int) =>
+                              (index: int, t: events) =>
 
-                              <Timeslot
-                                      key="5"
-                                      time="5"
-                                      appSend=appSend
-                              />
+                              switch(t){
+                              | Some(x) =>   List.mapi((idx:int, item) =>
+                                                                <Timeslot
+                                                                 key=string_of_int(idx)
+                                                                 time=item.eventStart
+                                                                 appSend=appSend
+                                                                />, x)
+                                | None => None
+                              }
                                ,
-                            children
+                            Util.getEventsinRange(children)
                            ),
 
                      )
