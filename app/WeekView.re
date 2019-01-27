@@ -4,20 +4,20 @@ open Util
 
 let component = ReasonReact.reducerComponent("WeekView");
 
-let events=[1,2,3];
 
 let make = (_children) => {
   ...component,
-  initialState:  () => {startDate: weekstart(MomentRe.momentNow()), weekDays: getAllDaysInTheWeek(MomentRe.momentNow()), showAddEventModal: false, eventStart: "", eventEnd: ""},
+  initialState:  () => {startDate: weekstart(MomentRe.momentNow()), weekDays: getAllDaysInTheWeek(MomentRe.momentNow()), showAddEventModal: false, events: None, current_event: None },
   reducer: reducer,
   render: ({state,send}) =>
   <div className="container">
 
 
-    <AddEventModal           title=""
+    <AddEventModal           title="test"
                              visible=state.showAddEventModal
-                             eventStart=state.eventStart
-                             eventEnd=state.eventEnd
+                             eventStart=""
+                             eventEnd=""
+                             editMode="Cancel"
                              appSend=send
                              />
 

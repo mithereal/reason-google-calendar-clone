@@ -12,13 +12,13 @@ e_start: string,
 e_end: string
 }
 
-type retainedProps = {title: string};
+type retainedProps = {title: string, editMode:string};
 
 let component = ReasonReact.statelessComponentWithRetainedProps("AddEventModal");
 
-let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, _children ) => {
+let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _children ) => {
   ...component,
-  retainedProps: {title: title},
+  retainedProps: {title: title, editMode: editMode},
     didUpdate: ({oldSelf, newSelf}) =>
       if (oldSelf.retainedProps.title !== newSelf.retainedProps.title) {
         /* do whatever sneaky imperative things here */
@@ -27,14 +27,27 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, _children ) =>
   render:  ({state,send}) =>
  <Modal
         visible=visible
-        onOk=(_event => appSend(ONCLOSEADDEVENTMODAL))
+        onOk=(_event => appSend(ONOKADDEVENTMODAL))
         onCancel=(_event => appSend(ONCLOSEADDEVENTMODAL))
         footer={[
           <Button key="back" onClick=(_event => appSend(ONCLOSEADDEVENTMODAL)) >
-          /*  {this.props.editMode ? 'Delete' : 'Cancel'} */
+          (
+                  switch(editMode){
+                      | "delete" => "Delete"
+                      | _ => "Cancel"
+                      }
+
+                      )
           </Button>,
-          <Button key="submit"  onClick=(_event => appSend(ONOKADDEVENTMODAL("x")))>
-            /*  {this.props.editMode ? 'Update Event' : 'Add Event'} */
+          <Button key="submit"  onClick=(_event => appSend(ONOKADDEVENTMODAL))>
+            (
+        switch(editMode){
+            | "update" => "Update Event"
+            | _ => "Add Event"
+            }
+
+            )
+
           </Button>,
         ]}
       >

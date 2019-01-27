@@ -2,19 +2,27 @@ type action =
 | GOTONEXTWEEK
 | GOTOPREVIOUSWEEK
 | GOTOTODAY
-| ONOKADDEVENTMODAL(string)
+| ONOKADDEVENTMODAL
 | ONCLOSEADDEVENTMODAL
 | ONCURRENTEVENTTIMECHANGE
-| ONTITLECHANGE
+| ONTITLECHANGE(string)
 | ONOPENADDEVENTMODAL
+
+type event = {
+eventName: string,
+eventStart: string,
+eventEnd: string,
+}
+
+type events = option(list(event))
 
 
 type state = {
 startDate: MomentRe.Moment.t,
 weekDays: list(MomentRe.Moment.t),
 showAddEventModal: bool,
-eventStart: string,
-eventEnd: string,
+current_event: option(event),
+events: events
 }
 
 let reducer = (action, state) =>
@@ -40,6 +48,14 @@ let reducer = (action, state) =>
                      | GOTOTODAY => let day = MomentRe.momentNow();
                                      let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day));
                      ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
-                     | ONOKADDEVENTMODAL(title) => ReasonReact.Update({...state, showAddEventModal: false})
+                     | ONOKADDEVENTMODAL =>
+                     let current_event:event = {
+                     eventName: "",
+                     eventStart: "",
+                     eventEnd: "",
+                                             };
+                                            let new_events = None;
+                     ReasonReact.Update({...state, showAddEventModal: false, events: new_events })
                      | ONOPENADDEVENTMODAL => ReasonReact.Update({...state, showAddEventModal: true})
+                     | ONTITLECHANGE(x) => ReasonReact.Update({...state, current_event: None})
                      };

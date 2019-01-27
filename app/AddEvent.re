@@ -12,20 +12,13 @@ render:  ({state,send}) =>
       <Input
         type_="text"
         placeholder="Add Title"
-        value="title"
+        value = title
         /* style={ Styles.inputStyles } */
         size="large"
        /* autoFocus={true} */
-        onChange=(_event => appSend(ONTITLECHANGE))
+        onChange=(event => appSend(ONTITLECHANGE(ReactEvent.Form.target(event)##value)))
       />
 
-            <DatePicker
-               style={ Styles.dateStyles }
-              value=""
-              onChange=""
-              showTime=""
-              format="MMM Do, YYYY hh:mm a"
-            />
 
     </>
 
