@@ -28,8 +28,8 @@ let make = (_children) => {
  self.send(FETCH)
 },
   render: (self) =>
-<div>
+<>
 <WeekView />
-</div>
+</>
   };
 
