@@ -2,15 +2,6 @@ open Antd;
 open WeekShared
 open Util
 
-type target = {
-value: string
-}
-
-type event = {
-target: target,
-e_start: string,
-e_end: string
-}
 
 type retainedProps = {title: string, editMode:string};
 
@@ -48,8 +39,9 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
 
             )
 
-          </Button>,
+          </Button>
         ]}
+
       >
         <AddEvent
           title=title

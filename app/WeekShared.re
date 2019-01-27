@@ -25,6 +25,10 @@ current_event: option(event),
 events: events
 }
 
+type target = {
+value: string
+}
+
 let reducer = (action, state) =>
                      switch(action) {
                      | GOTONEXTWEEK => let day = MomentRe.Moment.startOf(`week, state.startDate);
@@ -49,13 +53,30 @@ let reducer = (action, state) =>
                                      let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day));
                      ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
                      | ONOKADDEVENTMODAL =>
-                     let current_event:event = {
-                     eventName: "",
-                     eventStart: "",
-                     eventEnd: "",
-                                             };
+
                                             let new_events = None;
                      ReasonReact.Update({...state, showAddEventModal: false, events: new_events })
                      | ONOPENADDEVENTMODAL => ReasonReact.Update({...state, showAddEventModal: true})
-                     | ONTITLECHANGE(x) => ReasonReact.Update({...state, current_event: None})
+                     | ONTITLECHANGE(t) => switch(String.length(t) > 0){
+                        | false => ReasonReact.Update({...state, current_event: None})
+                        | _ =>
+                     let ce = switch(state.current_event){
+                                                                | None => let evt:event = {
+                                                                                                                                          eventName: t,
+                                                                                                                                          eventStart: "",
+                                                                                                                                          eventEnd: "",
+                                                                                                                                          };
+                                                                                                                                          Some(evt)
+
+                                                                | Some(x) => let evt:event = {
+                                                                eventName: t,
+                                                                eventStart: x.eventStart,
+                                                                eventEnd: x.eventEnd,
+                                                                };
+                                                                Some(evt)
+                                                                };
+
+                                               ReasonReact.Update(
+                     {...state, current_event: ce})
                      };
+                     }

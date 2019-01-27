@@ -12,14 +12,24 @@ let make = (_children) => {
   render: ({state,send}) =>
   <div className="container">
 
-
-    <AddEventModal           title="test"
-                             visible=state.showAddEventModal
-                             eventStart=""
-                             eventEnd=""
-                             editMode="Cancel"
-                             appSend=send
-                             />
+(
+switch(state.current_event){
+| None =>     <AddEventModal           title=""
+                                       visible=state.showAddEventModal
+                                       eventStart=""
+                                       eventEnd=""
+                                       editMode="cancel"
+                                       appSend=send
+                                       />
+| Some(e) =>     <AddEventModal           title=e.eventName
+                                          visible=state.showAddEventModal
+                                          eventStart=e.eventName
+                                          eventEnd=e.eventEnd
+                                          editMode="add"
+                                          appSend=send
+                                          />
+}
+)
 
     <WeekToolbar appSend=send formattedDate = Util.monthyear(state.startDate) />
 
