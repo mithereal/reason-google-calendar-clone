@@ -21,7 +21,7 @@ render: (_self) =>
                       ReasonReact.array(
 
                             Array.mapi(
-                              (index: int, t: int) =>
+                              (index: int, t: option(event)) =>
 
                               <Timeslot
                                       key="5"
