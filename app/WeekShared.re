@@ -52,9 +52,14 @@ let reducer = (action, state) =>
                      | GOTOTODAY => let day = MomentRe.momentNow();
                                      let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day));
                      ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
-                     | ONOKADDEVENTMODAL =>
+                     | ONOKADDEVENTMODAL => let new_events = switch(state.current_event){
+                        | None => state.events
+                        | Some(evt) => switch(state.events){
+                                         | Some(x) => Some(List.append(x, [evt]))
+                                         | None => Some([evt])
+                        }}
 
-                                            let new_events = None;
+
                      ReasonReact.Update({...state, showAddEventModal: false, events: new_events })
                      | ONOPENADDEVENTMODAL => ReasonReact.Update({...state, showAddEventModal: true})
                      | ONTITLECHANGE(t) => switch(String.length(t) > 0){
