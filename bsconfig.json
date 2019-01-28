@@ -1,5 +1,5 @@
 {
-  "name": "reason-google-calender-clone",
+  "name": "bs-google-calender",
   "version": "0.1.0",
   "reason": {"react-jsx" : 2},
   "bsc-flags": [

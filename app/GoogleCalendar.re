@@ -10,25 +10,27 @@ type state = {
 view: action
 }
 
+let reducer = (action, state) => {
 
-let reducer = (action, state) =>
-      switch(action) {
-     | WEEKLY => ReasonReact.Update({...state, view: WEEKLY})
+      switch(action){
+      | WEEKLY => ReasonReact.Update({...state, view: WEEKLY})
       }
+
+}
 
 let component = ReasonReact.reducerComponent("GoogleCalendar")
 
 let make = (_children) => {
-
   ...component,
-   initialState: () => {view: WEEKLY},
+  initialState: () => {view: WEEKLY},
   reducer,
   render: (self) =>
 
-(
-switch(self.state.view){
-| _ => <WeekView appSend = self.send startDate = MomentRe.momentNow() />
-}
+    (
+    switch(self.state.view){
+    | WEEKLY => <WeekView appSend = self.send startDate = MomentRe.momentNow() />
+    }
+
 )
 
   };
