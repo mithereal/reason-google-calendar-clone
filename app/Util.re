@@ -1,6 +1,26 @@
 open MomentRe;
 open Duration;
 
+let daynumber = (m) => {
+MomentRe.Moment.format("d", m);
+}
+
+let dayname = (m) => {
+MomentRe.Moment.format("dddd", m);
+}
+
+let daydate = (m) => {
+MomentRe.Moment.format("Do", m);
+}
+
+let monthyear = (m) => {
+MomentRe.Moment.format("MMM YYYY", m);
+}
+
+let weekstart = (m) => {
+Moment.startOf(`week, m);
+}
+
 
 let times = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 
@@ -71,10 +91,9 @@ coordinate;
 
 let isTodaysDate = (dateStamp) => {
 
-let today = momentNow();
-let ddiff = diff(today, dateStamp);
-let dur = duration(0, `days);
-let return = switch(today == dateStamp){
+let today = daynumber(momentNow())
+let ds = daynumber(dateStamp)
+let return = switch(today == ds){
              | true => true
              | false => false
 }
@@ -83,25 +102,7 @@ return;
 
 }
 
-let daynumber = (m) => {
-MomentRe.Moment.format("d", m);
-}
 
-let dayname = (m) => {
-MomentRe.Moment.format("dddd", m);
-}
-
-let daydate = (m) => {
-MomentRe.Moment.format("Do", m);
-}
-
-let monthyear = (m) => {
-MomentRe.Moment.format("MMM YYYY", m);
-}
-
-let weekstart = (m) => {
-Moment.startOf(`week, m);
-}
 
 let addTimeSuffix = (time) => {
 switch(time > 11){
