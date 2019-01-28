@@ -49,5 +49,9 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
           evtend=eventEnd
           appSend=appSend
         />
+
+        <DatePicker
+
+        />
       </Modal>
   };
