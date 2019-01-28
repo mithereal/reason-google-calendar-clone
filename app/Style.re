@@ -19,7 +19,7 @@ let weekDates = ReactDOMRe.Style.make(
                                       ())
 
 let weekDaysColSelected = ReactDOMRe.Style.make(
-                                       ~border="#e0e0e0 5px solid",
+                                       ~border="#e0e0e0 1px solid",
                                       ~height="100",
                                       ~backgroundColor="rgba(0,0,0,0.04)",
                                       ())

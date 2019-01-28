@@ -14,14 +14,14 @@ let make = (~appSend, ~startDate,  _children) => {
 
 (
 switch(state.current_event){
-| None =>     <AddEventModal           title=""
+| None =>     <EventModal           title=""
                                        visible=state.showAddEventModal
                                        eventStart=""
                                        eventEnd=""
                                        editMode="cancel"
                                        appSend=send
                                        />
-| Some(e) =>     <AddEventModal           title=e.eventName
+| Some(e) =>     <EventModal           title=e.eventName
                                           visible=state.showAddEventModal
                                           eventStart=e.eventName
                                           eventEnd=e.eventEnd

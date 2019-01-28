@@ -18,8 +18,12 @@ render: (_self) =>
                          <Col
                             key=(string_of_int(index))
                             span=3
-                             style=  Style.weekDaysColSelected
->
+                             style={
+                                    switch(Util.isTodaysDate(m)){
+                                    | true =>  Style.weekDaysColSelected
+                                    | false =>  Style.weekDaysCol
+                                    }
+                                    } >
                             <p style=Style.weekDayName >
                             (
                             ReasonReact.string(Util.dayname(m))

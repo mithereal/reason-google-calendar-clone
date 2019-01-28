@@ -5,7 +5,7 @@ open Util
 
 type retainedProps = {title: string, editMode:string};
 
-let component = ReasonReact.statelessComponentWithRetainedProps("AddEventModal");
+let component = ReasonReact.statelessComponentWithRetainedProps("EventModal");
 
 let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _children ) => {
   ...component,
@@ -43,7 +43,7 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
         ]}
 
       >
-        <AddEvent
+        <Event
           title=title
           start=eventStart
           evtend=eventEnd
@@ -52,9 +52,10 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
 
         <DatePicker
         style=Style.datePicker
-        value=[MomentRe.moment(eventStart), MomentRe.moment(eventEnd)]
-        showTime=[MomentRe.moment(eventStart), MomentRe.moment(eventEnd)]
+        value=[]
+        showTime=[]
         format="MMM Do, YYYY hh:mm a"
+
         />
       </Modal>
   };
