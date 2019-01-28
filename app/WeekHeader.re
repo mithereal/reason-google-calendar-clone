@@ -1,5 +1,5 @@
 open Antd;
-open Style;
+
 
 let component = ReasonReact.statelessComponent("WeekHeader");
 
@@ -18,13 +18,8 @@ render: (_self) =>
                          <Col
                             key=(string_of_int(index))
                             span=3
-                             style={
-                             let ts = "timestamp"
-                                    switch(Util.isTodaysDate(ts)){
-                                    | true =>  weekDaysColSelected
-                                    | false =>  weekDaysCol
-                                    }
-                                    } >
+                             style=  Style.weekDaysColSelected
+>
                             <p style=Style.weekDayName >
                             (
                             ReasonReact.string(Util.dayname(m))

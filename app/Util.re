@@ -72,12 +72,11 @@ coordinate;
 let isTodaysDate = (dateStamp) => {
 
 let today = momentNow();
-let dateStamp = moment(dateStamp);
 let ddiff = diff(today, dateStamp);
 let dur = duration(0, `days);
 let return = switch(today == dateStamp){
              | true => true
-             | _ => false
+             | false => false
 }
 
 return;

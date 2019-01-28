@@ -51,7 +51,10 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
         />
 
         <DatePicker
-
+        style=Style.datePicker
+        value=[MomentRe.moment(eventStart), MomentRe.moment(eventEnd)]
+        showTime=[MomentRe.moment(eventStart), MomentRe.moment(eventEnd)]
+        format="MMM Do, YYYY hh:mm a"
         />
       </Modal>
   };

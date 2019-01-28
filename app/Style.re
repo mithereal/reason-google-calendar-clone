@@ -19,7 +19,7 @@ let weekDates = ReactDOMRe.Style.make(
                                       ())
 
 let weekDaysColSelected = ReactDOMRe.Style.make(
-                                       ~border="#e0e0e0 1px solid",
+                                       ~border="#e0e0e0 5px solid",
                                       ~height="100",
                                       ~backgroundColor="rgba(0,0,0,0.04)",
                                       ())
@@ -29,3 +29,5 @@ let weekDaysCol = ReactDOMRe.Style.make(
                                       ~height="100",
                                       ())
 
+let datePicker = ReactDOMRe.Style.make(  ~width="100%",
+                                       ())
