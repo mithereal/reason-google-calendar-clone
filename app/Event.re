@@ -4,7 +4,7 @@ open WeekShared;
 
 let component = ReasonReact.statelessComponent("AddEvent");
 
-let make = (~title , ~start: string, ~evtend: string,  ~appSend, _children) => {
+let make = (~title , ~start, ~evtend,  ~appSend, _children) => {
 ...component,
 render:  ({state,send}) =>
     <>
@@ -16,9 +16,14 @@ render:  ({state,send}) =>
         style=Style.inputStyles
         size="large"
        /* autoFocus={true} */
-        onChange=(event => appSend(ONTITLECHANGE(ReactEvent.Form.target(event)##value)))
+        onChange=(event => appSend(TITLECHANGE(ReactEvent.Form.target(event)##value)))
       />
+        <DatePicker
+        style=Style.datePicker
+        value=MomentRe.moment(start)
+        format="MMM Do, YYYY hh:mm a"
 
+        />
 
     </>
 

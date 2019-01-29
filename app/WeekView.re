@@ -14,16 +14,10 @@ let make = (~appSend, ~startDate,  _children) => {
 
 (
 switch(state.current_event){
-| None =>     <EventModal           title=""
-                                       visible=state.showAddEventModal
-                                       eventStart=""
-                                       eventEnd=""
-                                       editMode="cancel"
-                                       appSend=send
-                                       />
-| Some(e) =>     <EventModal           title=e.eventName
+| None =>     ReasonReact.null
+| Some(e) =>     <EventModal              title=e.eventName
                                           visible=state.showAddEventModal
-                                          eventStart=e.eventName
+                                          eventStart=e.eventStart
                                           eventEnd=e.eventEnd
                                           editMode="add"
                                           appSend=send
@@ -48,12 +42,7 @@ switch(state.current_event){
                                     events = state.events
                                     appSend = send
 
-                                  >
-
-                               /* events for this timeslot go here as children */
-
-
-                                  </TimeSlotGroup>
+                                  />
                          ,
                        Util.times,
                      ),

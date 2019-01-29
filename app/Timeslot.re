@@ -3,7 +3,7 @@ open WeekShared;
 let component = ReasonReact.statelessComponent("Timeslot");
 
 
-let make = (~appSend,  ~datestamp ,~time, _children) => {
+let make = (~appSend,  ~datestamp ,~time, ~events:events, _children) => {
 ...component,
   render: (_self) =>
 
@@ -16,7 +16,13 @@ let make = (~appSend,  ~datestamp ,~time, _children) => {
              }
              }
     >
-<div style = Style.slotButton onClick=(_event => appSend(ONOPENADDEVENTMODAL)) />
+    {
+                 switch(events){
+                 | None =>  <div style = Style.slotButton onClick=(_event => appSend(EVENTMODALOK)) />
+                 | Some(e) =>  <div style = Style.eventButton onClick=(_event => appSend(EVENTMODALOK)) />
+                 }
+                 }
+
     </Col>
 
 }

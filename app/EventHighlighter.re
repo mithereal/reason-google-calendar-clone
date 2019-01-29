@@ -29,9 +29,8 @@ let make = (~event , ~startDate, ~endDate, _children) => {
   initialState: () => { showEditEventModal: false, eventNewStart: None, eventNewEnd: None },
   reducer,
   render:  ({state,send}) =>
-<div>
-      <Fragment>
- /* <AddEventModal
+      <>
+ /* <EventModal
           editMode={true}
           eventTitle={this.props.event.title}
           visible={showEditEventModal}
@@ -62,6 +61,5 @@ let make = (~event , ~startDate, ~endDate, _children) => {
           </span>
         </div>
         */
-      </Fragment>
-      </div>
+      </>
   };

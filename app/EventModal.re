@@ -18,10 +18,10 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
   render:  ({state,send}) =>
  <Modal
         visible=visible
-        onOk=(_event => appSend(ONOKADDEVENTMODAL))
-        onCancel=(_event => appSend(ONCLOSEADDEVENTMODAL))
+        onOk=(_event => appSend(EVENTMODALOK))
+        onCancel=(_event => appSend(EVENTMODALOK))
         footer={[
-          <Button key="back" onClick=(_event => appSend(ONCLOSEADDEVENTMODAL)) >
+          <Button key="back" onClick=(_event => appSend(EVENTMODALOK)) >
           (
                   switch(editMode){
                       | "delete" => "Delete"
@@ -30,7 +30,7 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
 
                       )
           </Button>,
-          <Button key="submit"  onClick=(_event => appSend(ONOKADDEVENTMODAL))>
+          <Button key="submit"  onClick=(_event => appSend(EVENTMODALOK))>
             (
         switch(editMode){
             | "update" => "Update Event"

@@ -3,7 +3,7 @@ open WeekShared;
 let component = ReasonReact.statelessComponent("TimeSlotGroup");
 
 
-let make = (~appSend, ~weekDays:list(MomentRe.Moment.t), ~time,  ~events=? , _children) => {
+let make = (~appSend, ~weekDays:list(MomentRe.Moment.t), ~time,  ~events:events , _children) => {
 ...component,
 render: (_self) =>
 
@@ -28,6 +28,7 @@ render: (_self) =>
                                       key=string_of_int(MomentRe.Moment.toUnix(t))
                                       datestamp=t
                                       time=string_of_int(index + 1)
+                                      events=events
                                       appSend=appSend
                               />
                                ,
@@ -35,6 +36,8 @@ render: (_self) =>
                            ),
                 )
                      )
+
+
 
          )
 

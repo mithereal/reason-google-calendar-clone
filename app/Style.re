@@ -76,3 +76,9 @@ let slotButton = ReactDOMRe.Style.make(
                                        ~height="100%",
                                        ~width="100%",
                                       ())
+
+let eventButton = ReactDOMRe.Style.make(
+ ~height="100%",
+ ~width="100%",
+ ~backgroundColor="rgba(0,255,0,0.04)",
+())

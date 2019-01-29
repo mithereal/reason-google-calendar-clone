@@ -21,8 +21,8 @@ type action =
 | GOTONEXTWEEK
 | GOTOPREVIOUSWEEK
 | GOTOTODAY
-| ONTITLECHANGE
-| ONOKADDEVENTMODAL(string)
+| TITLECHANGE
+| EVENTMODALOK(string)
 | FETCHEVENTS
 
 let generateWeekViewCoordinates = (event, startDate) => {

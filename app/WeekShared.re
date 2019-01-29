@@ -2,11 +2,11 @@ type action =
 | GOTONEXTWEEK
 | GOTOPREVIOUSWEEK
 | GOTOTODAY
-| ONOKADDEVENTMODAL
-| ONCLOSEADDEVENTMODAL
-| ONCURRENTEVENTTIMECHANGE
-| ONTITLECHANGE(string)
-| ONOPENADDEVENTMODAL
+| EVENTMODALOK
+| EVENTMODALOPEN
+| EVENTMODALCLOSE
+| TITLECHANGE(string)
+| NEWEVENT
 
 type event = {
 eventName: string,
@@ -39,8 +39,8 @@ let reducer = (action, state) =>
                                          MomentRe.Moment.setHour(0,day);
                                         let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day))
                         ReasonReact.Update({...state, startDate: day, weekDays: weekdays})
-                     | ONCLOSEADDEVENTMODAL => ReasonReact.Update({...state, showAddEventModal: false})
-                     | ONCURRENTEVENTTIMECHANGE => ReasonReact.Update({...state, showAddEventModal: false})
+                     | EVENTMODALCLOSE => ReasonReact.Update({...state, showAddEventModal: false})
+                     | NEWEVENT => ReasonReact.Update({...state, showAddEventModal: false})
                      | GOTOPREVIOUSWEEK => let day = MomentRe.Moment.startOf(`week, state.startDate);
                                        let duration = MomentRe.duration(7,`days);
 
@@ -52,7 +52,7 @@ let reducer = (action, state) =>
                      | GOTOTODAY => let day = MomentRe.momentNow();
                                      let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day));
                      ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
-                     | ONOKADDEVENTMODAL => let new_events = switch(state.current_event){
+                     | EVENTMODALOK => let new_events = switch(state.current_event){
                         | None => state.events
                         | Some(evt) => switch(state.events){
                                          | Some(x) => Some(List.append(x, [evt]))
@@ -61,8 +61,8 @@ let reducer = (action, state) =>
 
 
                      ReasonReact.Update({...state, showAddEventModal: false, events: new_events })
-                     | ONOPENADDEVENTMODAL => ReasonReact.Update({...state, showAddEventModal: true})
-                     | ONTITLECHANGE(t) => switch(String.length(t) > 0){
+                     | EVENTMODALOPEN => ReasonReact.Update({...state, showAddEventModal: true})
+                     | TITLECHANGE(t) => switch(String.length(t) > 0){
                         | false => ReasonReact.Update({...state, current_event: None})
                         | _ =>
                      let ce = switch(state.current_event){
