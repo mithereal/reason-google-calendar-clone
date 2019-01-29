@@ -10,7 +10,7 @@ let make = (~appSend, ~startDate,  _children) => {
   initialState:  () => {startDate: weekstart(startDate), weekDays: getAllDaysInTheWeek(startDate), showAddEventModal: false, events: None, current_event: None },
   reducer: reducer,
   render: ({state,send}) =>
-  <div className="container">
+  <div style=Style.container >
 
 (
 switch(state.current_event){
@@ -42,14 +42,15 @@ switch(state.current_event){
                         (index: int, t: int) =>
 
                          <TimeSlotGroup
-                                    key = (string_of_int(index))
+                                    key = (string_of_int(t))
                                     time = t
                                     weekDays = state.weekDays
-                                    appSend=send
+                                    events = state.events
+                                    appSend = send
 
                                   >
 
-
+                               /* events for this timeslot go here as children */
 
 
                                   </TimeSlotGroup>

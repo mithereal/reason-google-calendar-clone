@@ -13,7 +13,7 @@ render:  ({state,send}) =>
         type_="text"
         placeholder="Add Title"
         value = title
-        /* style={ Styles.inputStyles } */
+        style=Style.inputStyles
         size="large"
        /* autoFocus={true} */
         onChange=(event => appSend(ONTITLECHANGE(ReactEvent.Form.target(event)##value)))
