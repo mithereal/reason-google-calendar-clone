@@ -91,15 +91,22 @@ coordinate;
 
 let isTodaysDate = (dateStamp) => {
 
-let today = daynumber(momentNow())
-let ds = daynumber(dateStamp)
-let return = switch(today == ds){
-             | true => true
-             | false => false
+let m = momentNow()
+
+let now = Moment.setMinute(0,m);
+let now1 = Moment.setSecond(0,now);
+let today = Moment.setHour(0,now1);
+
+let ds = Moment.setMinute(0,dateStamp);
+let ds1 = Moment.setSecond(0,ds);
+let query = Moment.setHour(0,ds1);
+
+let diff = diff(query, today, `minutes)
+
+switch( int_of_float(diff) == 0){
+| false => false
+| true => true
 }
-
-return;
-
 }
 
 
