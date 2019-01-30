@@ -1,9 +1,10 @@
+open Shared;
 open Antd;
-open WeekShared;
+
 let component = ReasonReact.statelessComponent("TimeSlotGroup");
 
 
-let make = (~appSend, ~weekDays:list(MomentRe.Moment.t), ~time,  ~timeslots:WeekShared.timeslots , _children) => {
+let make = (~appSend, ~weekDays:list(MomentRe.Moment.t), ~time,  ~timeslots:Type.timeslots , _children) => {
 ...component,
 render: (_self) =>
 

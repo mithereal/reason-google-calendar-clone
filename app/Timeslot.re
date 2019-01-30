@@ -1,5 +1,6 @@
+open Shared;
 open Antd;
-open WeekShared;
+
 let component = ReasonReact.statelessComponent("Timeslot");
 
 

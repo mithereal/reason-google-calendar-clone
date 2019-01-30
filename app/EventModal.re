@@ -1,6 +1,6 @@
+open Shared;
+open Util;
 open Antd;
-open WeekShared
-open Util
 
 
 type retainedProps = {title: string, editMode:string};

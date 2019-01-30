@@ -1,5 +1,5 @@
-open WeekShared
-open Util
+open Shared;
+open Util;
 
 let sortbyTimeslots = (events, timeslots) => {
 switch(events){

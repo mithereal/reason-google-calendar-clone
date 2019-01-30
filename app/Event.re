@@ -1,6 +1,6 @@
-open Antd;
+open Shared;
 open Util;
-open WeekShared;
+open Antd;
 
 let component = ReasonReact.statelessComponent("Event");
 

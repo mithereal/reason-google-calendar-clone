@@ -1,4 +1,3 @@
-
 type state =
  | LOADING
  | LOADED
@@ -6,10 +5,10 @@ type state =
 type action =
  | LOADINGSCREEN
 
- let reducer = (action, _state) =>
-       switch(action) {
-        | LOADINGSCREEN => ReasonReact.Update(LOADED)
-       }
+let reducer = (action, _state) =>
+      switch(action) {
+       | LOADINGSCREEN => ReasonReact.Update(LOADED)
+      }
 
 let component = ReasonReact.reducerComponent("App");
 

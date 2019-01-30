@@ -1,6 +1,5 @@
 open Antd;
 
-
 let component = ReasonReact.statelessComponent("WeekHeader");
 
 

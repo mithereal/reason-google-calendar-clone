@@ -1,7 +1,5 @@
-open Webapi.Dom;
-
 open Shared;
-open WeekShared;
+open Webapi.Dom;
 
 type action =
 | WEEKLY
