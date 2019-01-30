@@ -3,7 +3,7 @@ open WeekShared;
 let component = ReasonReact.statelessComponent("Timeslot");
 
 
-let make = (~appSend,  ~datestamp ,~time, ~events:events, _children) => {
+let make = (~appSend, ~datestamp , ~time, ~events , _children) => {
 ...component,
   render: (_self) =>
 

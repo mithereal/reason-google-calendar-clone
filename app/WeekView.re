@@ -1,13 +1,19 @@
 open WeekShared
 open Util
 
+let sortbyTimeslots = (events, timeslots) => {
+switch(events){
+| None => None
+| Some(e) => Some(e)
+}
+}
 
 let component = ReasonReact.reducerComponent("WeekView");
 
 
 let make = (~appSend, ~startDate,  _children) => {
   ...component,
-  initialState:  () => {startDate: weekstart(startDate), weekDays: getAllDaysInTheWeek(startDate), showAddEventModal: false, events: None, current_event: None },
+  initialState:  () => {startDate: weekstart(startDate), weekDays: getAllDaysInTheWeek(startDate), showAddEventModal: false, events: None, current_event: None, timeslots: None },
   reducer: reducer,
   render: ({state,send}) =>
   <div style=Style.container >
@@ -30,6 +36,7 @@ switch(state.current_event){
     <WeekHeader weekDays=state.weekDays />
 
 (
+
                 ReasonReact.array(
                    Array.of_list(
                       List.mapi(
@@ -39,7 +46,7 @@ switch(state.current_event){
                                     key = (string_of_int(t))
                                     time = t
                                     weekDays = state.weekDays
-                                    events = state.events
+                                    timeslots = state.timeslots
                                     appSend = send
 
                                   />

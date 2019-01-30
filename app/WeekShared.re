@@ -14,7 +14,13 @@ eventStart: string,
 eventEnd: string,
 }
 
+type timeslot = {
+time: string,
+events: option(list(event))
+}
+
 type events = option(list(event))
+type timeslots = option(list(timeslot))
 
 
 type state = {
@@ -22,7 +28,8 @@ startDate: MomentRe.Moment.t,
 weekDays: list(MomentRe.Moment.t),
 showAddEventModal: bool,
 current_event: option(event),
-events: events
+events: events,
+timeslots: timeslots
 }
 
 type target = {

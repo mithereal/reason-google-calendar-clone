@@ -2,7 +2,7 @@ open Antd;
 open Util;
 open WeekShared;
 
-let component = ReasonReact.statelessComponent("AddEvent");
+let component = ReasonReact.statelessComponent("Event");
 
 let make = (~title , ~start, ~evtend,  ~appSend, _children) => {
 ...component,
