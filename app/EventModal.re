@@ -50,12 +50,5 @@ let make = ( ~title, ~visible, ~eventStart, ~eventEnd,  ~appSend, ~editMode, _ch
           appSend=appSend
         />
 
-        <DatePicker
-        style=Style.datePicker
-        value=[]
-        showTime=[]
-        format="MMM Do, YYYY hh:mm a"
-
-        />
       </Modal>
   };

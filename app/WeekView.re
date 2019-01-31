@@ -14,7 +14,13 @@ let make = (~appSend, ~startDate,  _children) => {
 
 (
 switch(state.current_event){
-| None =>     ReasonReact.null
+| None =>     <EventModal           title=""
+                                       visible=state.showAddEventModal
+                                       eventStart=""
+                                       eventEnd=""
+                                       editMode="cancel"
+                                       appSend=send
+                                       />
 | Some(e) =>     <EventModal              title=e.eventName
                                           visible=state.showAddEventModal
                                           eventStart=e.eventStart
