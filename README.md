@@ -13,6 +13,9 @@ A reason demo of google calendar
 3.  `yarn start`
 4.  Change tabs to the browser
 
+####-or-
+open example/index.html in web browser
+
 ## Features
 
 1.  Add meeting
