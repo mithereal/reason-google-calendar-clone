@@ -3,10 +3,10 @@ value: string
 }
 
 type event = {
-target: option(target),
 eventName: string,
 eventStart: string,
 eventEnd: string,
+target: option(target),
 }
 
 type events = option(list(event))

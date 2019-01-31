@@ -7,6 +7,7 @@ type action =
 | EVENTMODALOK
 | EVENTMODALOPEN
 | EVENTMODALCLOSE
+| FETCHEVENTS
 | TITLECHANGE(string)
 | NEWEVENT(MomentRe.Moment.t, string, string)
 
@@ -17,6 +18,21 @@ showAddEventModal: bool,
 current_event: option(event),
 events: events,
 timeslots: timeslots
+}
+
+let sortbyTimeslots = (events, timeslots) => {
+
+switch(events){
+| None => None
+| Some(e) => Some(e)
+}
+
+let timeslot = {
+time: "123",
+events: None
+}
+
+Some([timeslot])
 }
 
 let reducer = (action, state) =>
@@ -58,10 +74,13 @@ let reducer = (action, state) =>
                                          | Some(x) => Some(List.append(x, [evt]))
                                          | None => Some([evt])
                         }}
-
+Js.log(new_events);
 
                      ReasonReact.Update({...state, showAddEventModal: false, events: new_events })
                      | EVENTMODALOPEN => ReasonReact.Update({...state, showAddEventModal: true})
+                     | FETCHEVENTS => let events = None;
+                                      let timeslots = sortbyTimeslots(events, Util.times);
+                     ReasonReact.Update({...state, events: None, timeslots: timeslots})
                      | TITLECHANGE(t) => switch(String.length(t) > 0){
                         | false => ReasonReact.Update({...state, current_event: None})
                         | _ =>
