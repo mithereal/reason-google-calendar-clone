@@ -7,6 +7,7 @@ let component = ReasonReact.statelessComponent("Event");
 let make = (~title , ~start, ~evtend,  ~appSend, _children) => {
 ...component,
 render:  ({state,send}) =>
+
     <>
 
       <Input

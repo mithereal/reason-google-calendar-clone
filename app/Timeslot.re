@@ -19,7 +19,7 @@ let make = (~appSend, ~datestamp , ~time, ~events , _children) => {
     >
     {
                  switch(events){
-                 | None =>  <div style = Style.slotButton onClick=(_event => appSend(EVENTMODALOPEN)) />
+                 | None =>  <div style = Style.slotButton onClick=(_event => appSend(NEWEVENT(datestamp, time, "0"))) />
                  | Some(e) =>  <div style = Style.eventButton onClick=(_event => appSend(EVENTMODALOPEN)) />
                  }
                  }

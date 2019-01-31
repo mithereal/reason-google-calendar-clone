@@ -115,8 +115,13 @@ let addTimeSuffix = (time) => {
 switch(time > 11){
 | true => switch(time == 12){
         | true => string_of_int(time) ++ "pm"
-         | _ => let ct = time - 12;
-                    string_of_int(ct) ++ "am"
+         | false => switch(time == 24){
+           | false => let ct = time - 12;
+                      string_of_int(ct) ++ "pm"
+           | true =>  let ct = time - 12;
+                      string_of_int(ct) ++ "am"
+         }
+
             }
 | _ => string_of_int(time) ++ "am"
 }

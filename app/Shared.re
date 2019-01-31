@@ -8,7 +8,7 @@ type action =
 | EVENTMODALOPEN
 | EVENTMODALCLOSE
 | TITLECHANGE(string)
-| NEWEVENT
+| NEWEVENT(MomentRe.Moment.t, string, string)
 
 type state = {
 startDate: MomentRe.Moment.t,
@@ -30,7 +30,17 @@ let reducer = (action, state) =>
                                         let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day))
                         ReasonReact.Update({...state, startDate: day, weekDays: weekdays})
                      | EVENTMODALCLOSE => ReasonReact.Update({...state, showAddEventModal: false})
-                     | NEWEVENT => ReasonReact.Update({...state, showAddEventModal: false})
+                     | NEWEVENT(datestamp, hour, minute) =>
+                     let md = MomentRe.Moment.setHour(int_of_string(hour),datestamp);
+                     let evt_start  = MomentRe.Moment.setMinute(int_of_string(minute),md);
+                     let evt:event = {
+                          eventName: "",
+                          eventStart: hour,
+                          eventEnd: "",
+                          target: None
+                          }
+
+                      ReasonReact.Update({...state, showAddEventModal: true, current_event: Some(evt)})
                      | GOTOPREVIOUSWEEK => let day = MomentRe.Moment.startOf(`week, state.startDate);
                                        let duration = MomentRe.duration(7,`days);
 

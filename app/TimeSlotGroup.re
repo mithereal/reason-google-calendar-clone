@@ -28,7 +28,7 @@ render: (_self) =>
                               <Timeslot
                                       key=string_of_int(MomentRe.Moment.toUnix(day))
                                       datestamp=day
-                                      time=string_of_int(index + 1)
+                                      time=string_of_int(time)
                                       events=None
                                       appSend=appSend
                               />
