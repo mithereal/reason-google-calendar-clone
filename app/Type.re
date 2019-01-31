@@ -24,5 +24,3 @@ timeslots: timeslots
 }
 
 type weekdays = list(weekday)
-
-
