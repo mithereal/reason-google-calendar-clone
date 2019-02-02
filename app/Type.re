@@ -2,6 +2,13 @@ type target = {
 value: string
 }
 
+type newEvent = {
+e_start: MomentRe.Duration.t,
+e_end: MomentRe.Duration.t,
+startWeek: int,
+endWeek: int
+}
+
 type event = {
 eventName: string,
 eventStart: string,

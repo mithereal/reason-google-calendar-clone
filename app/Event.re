@@ -2,6 +2,18 @@ open Shared;
 open Util;
 open Antd;
 
+   let complete_event = eventWithInfo()
+
+   let eventexists = eventExist(allEvents, time)
+
+   let newevents = switch(eventexists){
+   | true => allEvents
+   | _ => allEvents
+   }
+
+   newevents
+}
+
 let component = ReasonReact.statelessComponent("Event");
 
 let make = (~title , ~start, ~evtend,  ~appSend, _children) => {

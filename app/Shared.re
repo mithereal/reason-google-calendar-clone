@@ -35,6 +35,36 @@ events: None
 Some([timeslot])
 }
 
+let generateUniqueId = (title, e_start, e_end) => {
+   e_start + title + e_end
+}
+
+let eventExist = (events,time) => {
+false
+}
+
+let addEvent = (allEvents, newEvent) => {
+   let time = Duration.hours(newEvent.e_start)
+
+   let eventWithInfo = () => {
+      ...newEvent ,
+     startWeek: Duration.weeks(newEvent.e_start),
+     endWeek: Duration.weeks(newEvent.e_end)
+
+   }
+
+   let complete_event = eventWithInfo()
+
+   let eventexists = eventExist(allEvents, time)
+
+   let newevents = switch(eventexists){
+   | true => List.append(allEvents, [complete_event])
+   | false => allEvents
+   }
+
+   newevents
+}
+
 let reducer = (action, state) =>
                      switch(action) {
                      | GOTONEXTWEEK => let day = MomentRe.Moment.startOf(`week, state.startDate);
