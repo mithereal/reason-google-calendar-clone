@@ -47,14 +47,13 @@ switch(state.current_event){
 
                          <TimeSlotGroup
                                     key = (string_of_int(t))
-                                    time = t
                                     weekDays = state.weekDays
-                                    timeslots = state.timeslots
+                                    timeslot = t
                                     appSend = send
 
                                   />
                          ,
-                       Util.times,
+                       state.timeslots,
                      ),
                  ),
                )

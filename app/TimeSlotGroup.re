@@ -4,7 +4,7 @@ open Antd;
 let component = ReasonReact.statelessComponent("TimeSlotGroup");
 
 
-let make = (~appSend, ~weekDays:list(MomentRe.Moment.t), ~time,  ~timeslots:Type.timeslots , _children) => {
+let make = (~appSend, ~weekDays:list(MomentRe.Moment.t),  ~timeslot:Type.timeslot , _children) => {
 ...component,
 render: (_self) =>
 
@@ -28,8 +28,7 @@ render: (_self) =>
                               <Timeslot
                                       key=string_of_int(MomentRe.Moment.toUnix(day))
                                       datestamp=day
-                                      time=string_of_int(time)
-                                      events=None
+                                      timeslot=timeslot
                                       appSend=appSend
                               />
                                ,
