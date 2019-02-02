@@ -58,8 +58,8 @@ let addEvent = (allEvents, newEvent) => {
    let eventexists = eventExist(allEvents, time)
 
    let newevents = switch(eventexists){
-   | true => List.append(allEvents, [complete_event])
-   | false => allEvents
+   | false => List.append(allEvents, [complete_event])
+   | true => allEvents
    }
 
    newevents
