@@ -9,7 +9,7 @@ type action =
 | EVENTMODALCLOSE
 | FETCHEVENTS
 | TITLECHANGE(string)
-| NEWEVENT(MomentRe.Moment.t, string, string)
+| NEWEVENT(MomentRe.Moment.t, new_event)
 
 type state = {
 startDate: MomentRe.Moment.t,
@@ -76,17 +76,28 @@ let reducer = (action, state) =>
                                         let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day))
                         ReasonReact.Update({...state, startDate: day, weekDays: weekdays})
                      | EVENTMODALCLOSE => ReasonReact.Update({...state, showAddEventModal: false})
-                     | NEWEVENT(datestamp, hour, minute) =>
-                     let md = MomentRe.Moment.setHour(int_of_string(hour),datestamp);
-                     let evt_start  = MomentRe.Moment.setMinute(int_of_string(minute),md);
-                     let evt:event = {
-                          eventName: "",
-                          eventStart: hour,
-                          eventEnd: "",
-                          target: None
-                          }
+                     | NEWEVENT(datestamp, new_event) =>
 
-                      ReasonReact.Update({...state, showAddEventModal: true, current_event: Some(evt)})
+                 let evt = switch(state.current_event){
+                     | None => None
+                     | Some(e) =>
+                                         let md = MomentRe.Moment.setHour(int_of_string(new_event.hour),datestamp);
+                                         let evt_start  = MomentRe.Moment.setMinute(int_of_string(new_event.minute),md);
+
+                                         let md = MomentRe.Moment.setHour(int_of_string(new_event.hour) + 1,datestamp);
+                                         let evt_end  = MomentRe.Moment.setMinute(0 ,md);
+
+                                         let evt:event = {
+                                              eventName: generateUniqueId(e.title, evt_start, evt_end),
+                                              eventStart: evt_start,
+                                              eventEnd: evt_end,
+                                              target: None
+                                              }
+                                              Some(evt)
+                     }
+
+
+                      ReasonReact.Update({...state, showAddEventModal: true, current_event: evt})
                      | GOTOPREVIOUSWEEK => let day = MomentRe.Moment.startOf(`week, state.startDate);
                                        let duration = MomentRe.duration(7,`days);
 
@@ -113,7 +124,7 @@ Js.log(new_events);
                      ReasonReact.Update({...state, events: None, timeslots: timeslots})
                      | TITLECHANGE(t) => switch(String.length(t) > 0){
                         | false => ReasonReact.Update({...state, current_event: None})
-                        | _ =>
+                        | true =>
                      let ce = switch(state.current_event){
                                                                 | None => let evt:event = {
                                                                                                                                           eventName: t,

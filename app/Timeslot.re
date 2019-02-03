@@ -4,7 +4,7 @@ open Antd;
 let component = ReasonReact.statelessComponent("Timeslot");
 
 
-let make = (~appSend, ~datestamp , ~timeslot , _children) => {
+let make = (~appSend, ~datestamp , ~timeslot: Type.timeslot , _children) => {
 ...component,
   render: (_self) =>
 
@@ -18,10 +18,17 @@ let make = (~appSend, ~datestamp , ~timeslot , _children) => {
              }
     >
     {
-                 switch(timeslot.events){
-                 | None =>  <div style = Style.slotButton onClick=(_event => appSend(NEWEVENT(datestamp, timeslot.time , "0"))) />
-                 | Some(e) =>  <div style = Style.eventButton onClick=(_event => appSend(EVENTMODALOPEN)) />
-                 }
+
+      switch(timeslot){
+                     | None =>  <div style = Style.slotButton onClick=(_event => appSend(NEWEVENT(datestamp, timeslot.time , "0"))) />
+                     | Some(e) =>
+                     switch(timeslot.events){
+                         | None =>  <div style = Style.slotButton onClick=(_event => appSend(NEWEVENT(datestamp, timeslot.time , "0"))) />
+                         | Some(e) =>  <div style = Style.eventButton onClick=(_event => appSend(EVENTMODALOPEN)) />
+                                                    }
+                     }
+
+
                  }
 
     </Col>

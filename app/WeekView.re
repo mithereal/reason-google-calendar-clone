@@ -43,7 +43,7 @@ switch(state.current_event){
                 ReasonReact.array(
                    Array.of_list(
                       List.mapi(
-                        (index: int, t: int) =>
+                        (index: int, t: timeslot) =>
 
                          <TimeSlotGroup
                                     key = (string_of_int(t))
