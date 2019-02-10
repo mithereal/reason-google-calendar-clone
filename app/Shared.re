@@ -22,21 +22,19 @@ timeslots: timeslots
 
 let sortbyTimeslots = (events, timeslots) => {
 
-switch(events){
-| None => None
-| Some(e) => Some(e)
-}
+let t = List.map( t => {
+               time: "",
+               events: None
+               }
+               , timeslots )
 
-let timeslot = {
-time: "123",
-events: None
-}
 
-Some([timeslot])
+let ts:timeslot = {  time: "",  events: None  }
+Some([ts])
 }
 
 let generateUniqueId = (title, e_start, e_end) => {
-   e_start + title + e_end
+   title
 }
 
 let eventExist = (events,time) => {
@@ -44,12 +42,12 @@ false
 }
 
 let addEvent = (allEvents, newEvent) => {
-   let time = Duration.hours(newEvent.e_start)
+   let time = MomentRe.Duration.hours(newEvent.e_start)
 
    let eventWithInfo = () => {
       ...newEvent ,
-     startWeek: Duration.weeks(newEvent.e_start),
-     endWeek: Duration.weeks(newEvent.e_end)
+     startWeek: MomentRe.Duration.weeks(newEvent.e_start),
+     endWeek: MomentRe.Duration.weeks(newEvent.e_end)
 
    }
 
@@ -81,17 +79,22 @@ let reducer = (action, state) =>
                  let evt = switch(state.current_event){
                      | None => None
                      | Some(e) =>
-                                         let md = MomentRe.Moment.setHour(int_of_string(new_event.hour),datestamp);
-                                         let evt_start  = MomentRe.Moment.setMinute(int_of_string(new_event.minute),md);
+                                         let md = MomentRe.Moment.setHour(int_of_string(new_event.start),datestamp);
+                                         let evt_start  = MomentRe.Moment.setMinute(0,md);
 
-                                         let md = MomentRe.Moment.setHour(int_of_string(new_event.hour) + 1,datestamp);
+                                         let md = MomentRe.Moment.setHour(int_of_string(new_event.start) + 1,datestamp);
+
                                          let evt_end  = MomentRe.Moment.setMinute(0 ,md);
+                                         let startweek  = 1;
+                                         let endweek  = 1;
 
                                          let evt:event = {
-                                              eventName: generateUniqueId(e.title, evt_start, evt_end),
-                                              eventStart: evt_start,
-                                              eventEnd: evt_end,
-                                              target: None
+                                              id: generateUniqueId(e.eventName, evt_start, evt_end),
+                                              eventName: e.eventName,
+                                              eventStart: Some(evt_start),
+                                              eventEnd: Some(evt_end),
+                                              startWeek: Some(startweek),
+                                              endWeek: Some(endweek)
                                               }
                                               Some(evt)
                      }
@@ -127,18 +130,24 @@ Js.log(new_events);
                         | true =>
                      let ce = switch(state.current_event){
                                                                 | None => let evt:event = {
-                                                                                                                                          eventName: t,
-                                                                                                                                          eventStart: "",
-                                                                                                                                          eventEnd: "",
-                                                                                                                                          target: None,
-                                                                                                                                          };
-                                                                                                                                          Some(evt)
+                                                                           id: "",
+                                                                           eventName: t,
+                                                                           eventStart: None,
+                                                                           eventEnd: None,
+                                                                           startWeek: None,
+                                                                           endWeek: None
+
+                                                                           };
+                                                                           Some(evt)
 
                                                                 | Some(x) => let evt:event = {
+                                                                id: "",
                                                                 eventName: t,
-                                                                eventStart: x.eventStart,
-                                                                eventEnd: x.eventEnd,
-                                                                target: None,
+                                                                eventStart: None,
+                                                                eventEnd: None,
+                                                                startWeek: None,
+                                                                endWeek: None
+
                                                                 };
                                                                 Some(evt)
                                                                 };

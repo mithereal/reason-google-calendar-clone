@@ -12,7 +12,7 @@ render: (_self) =>
       <Col style=Style.timeCol span=3>
         <span style=Style.timeString>
          (
-         ReasonReact.string(Util.addTimeSuffix(time))
+         ReasonReact.string(Util.addTimeSuffix(int_of_string(timeslot.time)))
          )
         </span>
 
@@ -21,8 +21,7 @@ render: (_self) =>
       (
                       ReasonReact.array(
                     Array.of_list(
-                            List.mapi(
-                              (index: int, day) =>
+                            List.map( day =>
 
 
                               <Timeslot

@@ -14,10 +14,12 @@ endWeek: int
 }
 
 type event = {
+id: string,
 eventName: string,
-eventStart: string,
-eventEnd: string,
-target: option(target),
+eventStart: option(MomentRe.Moment.t),
+eventEnd: option(MomentRe.Moment.t),
+startWeek: option(int),
+endWeek: option(int)
 }
 
 type events = option(list(event))

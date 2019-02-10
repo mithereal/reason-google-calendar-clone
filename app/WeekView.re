@@ -1,3 +1,4 @@
+open Type;
 open Shared;
 open Util;
 
@@ -26,8 +27,8 @@ switch(state.current_event){
                                        />
 | Some(e) =>     <EventModal              title=e.eventName
                                           visible=state.showAddEventModal
-                                          eventStart=e.eventStart
-                                          eventEnd=e.eventEnd
+                                          eventStart=""
+                                          eventEnd=""
                                           editMode="add"
                                           appSend=send
                                           />
@@ -39,25 +40,28 @@ switch(state.current_event){
     <WeekHeader weekDays=state.weekDays />
 
 (
+switch (state.timeslots){
+| None => ReasonReact.null
+| Some(t) => ReasonReact.array(
+                               Array.of_list(
+                                  List.mapi(
+                                    (index: int, t: timeslot) =>
 
-                ReasonReact.array(
-                   Array.of_list(
-                      List.mapi(
-                        (index: int, t: timeslot) =>
+                                     <TimeSlotGroup
+                                                key = (t.time)
+                                                weekDays = state.weekDays
+                                                timeslot = t
+                                                appSend = send
 
-                         <TimeSlotGroup
-                                    key = (string_of_int(t))
-                                    weekDays = state.weekDays
-                                    timeslot = t
-                                    appSend = send
+                                              />
+                                     ,
+                                   t,
+                                 ),
+                             ),
+                           )
+}
 
-                                  />
-                         ,
-                       state.timeslots,
-                     ),
-                 ),
-               )
-            )
+)
 
 
    </div>
