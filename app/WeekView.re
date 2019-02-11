@@ -8,7 +8,7 @@ let component = ReasonReact.reducerComponent("WeekView");
 
 let make = (~appSend, ~startDate,  _children) => {
   ...component,
-  initialState:  () => {startDate: weekstart(startDate), weekDays: getAllDaysInTheWeek(startDate), showAddEventModal: false, events: None, current_event: None, timeslots: None },
+  initialState:  () => {startDate: Util.weekstart(startDate), weekDays: Util.getAllDaysInTheWeek(startDate), showAddEventModal: false, events: None, current_event: None, timeslots: None },
   reducer: reducer,
    didMount: self => {
         self.send(FETCHEVENTS)

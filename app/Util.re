@@ -1,3 +1,4 @@
+open Type;
 open MomentRe;
 open Duration;
 
@@ -21,29 +22,9 @@ let weekstart = (m) => {
 Moment.startOf(`week, m);
 }
 
-
-let times = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-
-type target = {
-value: string
-}
-
-type event = {
-target: target,
-e_start: string,
-e_end: string
-}
-
-type coordinate = {
-top: string,
-left: string,
-height: string,
-width: string
-}
-
-let days_list = [0,1,2,3,4,5,6];
-
 let getAllDaysInTheWeek = (currentDate) => {
+
+ let days_list = [0,1,2,3,4,5,6];
 
  let days = List.mapi((index: int, d: int) =>
  {
@@ -109,8 +90,6 @@ switch( int_of_float(diff) == 0){
 }
 }
 
-
-
 let addTimeSuffix = (time) => {
 switch(time > 11){
 | true => switch(time == 12){
@@ -127,6 +106,58 @@ switch(time > 11){
 }
 }
 
-let getEventsinRange = (e) => {
-e
+
+let convertToTimeslots = (weekdays, times) => {
+
+let momentTimes = List.map( t => MomentRe.Duration(t) , times )
+
+let ts = List.map( w => {
+               time: t,
+               events: None
+               }
+               , weekdays )
+
+Some(ts)
 }
+
+let sortbyTimeslots = (events, timeslots) => {
+
+let evts = List.map( t => {
+               time: t,
+               events: None
+               }
+               , timeslots )
+
+Some(evts)
+}
+
+let generateUniqueId = (title, e_start, e_end) => {
+   title
+}
+
+let eventExist = (events,time) => {
+false
+}
+
+let addEvent = (allEvents, newEvent) => {
+   let time = MomentRe.Duration.hours(newEvent.e_start)
+
+   let eventWithInfo = () => {
+      ...newEvent ,
+     startWeek: MomentRe.Duration.weeks(newEvent.e_start),
+     endWeek: MomentRe.Duration.weeks(newEvent.e_end)
+
+   }
+
+   let complete_event = eventWithInfo()
+
+   let eventexists = eventExist(allEvents, time)
+
+   let newevents = switch(eventexists){
+   | false => List.append(allEvents, [complete_event])
+   | true => allEvents
+   }
+
+   newevents
+}
+

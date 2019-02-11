@@ -37,3 +37,10 @@ timeslots: timeslots
 }
 
 type weekdays = list(weekday)
+
+type coordinate = {
+top: string,
+left: string,
+height: string,
+width: string
+}
