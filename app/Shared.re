@@ -20,17 +20,26 @@ events: events,
 timeslots: timeslots
 }
 
+let convertToTimeslots = (times) => {
+
+let ts = List.map( t => {
+               time: t,
+               events: None
+               }
+               , times )
+
+Some(ts)
+}
+
 let sortbyTimeslots = (events, timeslots) => {
 
-let t = List.map( t => {
-               time: "",
+let evts = List.map( t => {
+               time: t,
                events: None
                }
                , timeslots )
 
-
-let ts:timeslot = {  time: "",  events: None  }
-Some([ts])
+Some(evts)
 }
 
 let generateUniqueId = (title, e_start, e_end) => {

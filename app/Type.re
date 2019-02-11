@@ -25,7 +25,7 @@ endWeek: option(int)
 type events = option(list(event))
 
 type timeslot = {
-time: string,
+time: MomentRe.Moment.t,
 events: events
 }
 
