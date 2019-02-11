@@ -45,9 +45,17 @@ days
 
 let generateWeekViewCoordinates = (event, startDate) => {
 
-let start = moment(event.e_start)
-let evtend = moment(event.e_end)
-let diff = diff(evtend, start)
+let evt_start = switch (event.eventStart) {
+| None => None
+| Some(e) => e
+}
+
+let evt_end = switch (event.eventEnd) {
+| None => None
+| Some(e) => e
+}
+
+let diff = diff(evt_end, evt_start)
 let total_duration = duration(2)
 
 let weekStart = moment(startDate)

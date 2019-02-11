@@ -9,7 +9,7 @@ type action =
 | EVENTMODALCLOSE
 | FETCHEVENTS
 | TITLECHANGE(string)
-| NEWEVENT(MomentRe.Moment.t, new_event)
+| NEWEVENT(MomentRe.Moment.t, integer)
 
 type state = {
 startDate: MomentRe.Moment.t,
@@ -60,7 +60,7 @@ let reducer = (action, state) => {
                         ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
                      | FETCHEVENTS =>
                         let events = None;
-                        let timeslots = convertToTimeslots(state.weekDays, Util.times);
+                        let timeslots = Util.convertToTimeslots(state.weekDays, Util.times);
                         ReasonReact.Update({...state, events: None, timeslots: timeslots})
                      | TITLECHANGE(t) =>
                         switch(String.length(t) > 0){
@@ -90,14 +90,14 @@ let reducer = (action, state) => {
                                        }};
 
                           ReasonReact.Update({...state, current_event: ce})
-                      | NEWEVENT(datestamp, new_event) =>
+                      | NEWEVENT(datestamp, hour) =>
                                                         let evt = switch(state.current_event){
                                                         | None => None
                                                         | Some(e) =>
-                                                            let md = MomentRe.Moment.setHour(int_of_string(new_event.start),datestamp);
+                                                            let md = MomentRe.Moment.setHour(hour,datestamp);
                                                             let evt_start  = MomentRe.Moment.setMinute(0,md);
 
-                                                            let md = MomentRe.Moment.setHour(int_of_string(new_event.start) + 1,datestamp);
+                                                            let md = MomentRe.Moment.setHour(hour + 1,datestamp);
 
                                                             let evt_end  = MomentRe.Moment.setMinute(0 ,md);
                                                             let startweek  = 1;
