@@ -1,8 +1,8 @@
 type newEvent = {
-eventStart: MomentRe.Duration.t,
-eventEnd: MomentRe.Duration.t,
-startWeek: int,
-endWeek: int
+eventStart: option(MomentRe.Duration.t),
+eventEnd: option(MomentRe.Duration.t),
+startWeek: option(int),
+endWeek: option(int)
 }
 
 type event = {

@@ -43,40 +43,7 @@ let getAllDaysInTheWeek = (currentDate) => {
 days
 };
 
-let generateWeekViewCoordinates = (event, startDate) => {
 
-let evt_start = switch (event.eventStart) {
-| None => None
-| Some(e) => e
-}
-
-let evt_end = switch (event.eventEnd) {
-| None => None
-| Some(e) => e
-}
-
-let diff = diff(evt_end, evt_start)
-let total_duration = duration(2)
-
-let weekStart = moment(startDate)
-
- let timeFactor = 5;
-
- let top = "50%";
- let left = "50%";
- let height = "50%";
- let width = "50%";
-
-  let coordinate:coordinate = {
-      top: top,
-      left: left,
-      height: height,
-      width: width
-      };
-
-coordinate;
-
-}
 
 let isTodaysDate = (dateStamp) => {
 
@@ -115,28 +82,28 @@ switch(time > 11){
 }
 
 
-let convertToTimeslots = (weekdays, times) => {
+let convertToTimeslots = (times) => {
 
-let momentTimes = List.map( t => MomentRe.Duration(t) , times )
+let momentTimes = List.map( t => t , times )
 
-let ts = List.map( w => {
+let ts = List.map( t => {
                time: t,
                events: None
                }
-               , weekdays )
+               , momentTimes )
 
 Some(ts)
 }
 
 let sortbyTimeslots = (events, timeslots) => {
 
-let evts = List.map( t => {
+let ts = List.map( t => {
                time: t,
                events: None
                }
                , timeslots )
 
-Some(evts)
+Some(ts)
 }
 
 let generateUniqueId = (title, e_start, e_end) => {
@@ -148,12 +115,12 @@ false
 }
 
 let addEvent = (allEvents, newEvent) => {
-   let time = MomentRe.Duration.hours(newEvent.e_start)
+   let time = MomentRe.Duration.hours(newEvent.eventStart)
 
-   let eventWithInfo = () => {
+ let eventWithInfo = () => {
       ...newEvent ,
-     startWeek: MomentRe.Duration.weeks(newEvent.e_start),
-     endWeek: MomentRe.Duration.weeks(newEvent.e_end)
+     startWeek: MomentRe.Duration.weeks(newEvent.eventStart),
+     endWeek: MomentRe.Duration.weeks(newEvent.eventEnd)
 
    }
 

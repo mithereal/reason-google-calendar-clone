@@ -60,7 +60,7 @@ let reducer = (action, state) => {
                         ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
                      | FETCHEVENTS =>
                         let events = None;
-                        let timeslots = Util.convertToTimeslots(state.weekDays, Util.times);
+                        let timeslots = Util.times;
                         ReasonReact.Update({...state, events: None, timeslots: timeslots})
                      | TITLECHANGE(t) =>
                         switch(String.length(t) > 0){
