@@ -2,6 +2,8 @@ open Type;
 open MomentRe;
 open Duration;
 
+module Format = {
+
 let daynumber = (m) => {
 MomentRe.Moment.format("d", m);
 }
@@ -16,6 +18,7 @@ MomentRe.Moment.format("Do", m);
 
 let monthyear = (m) => {
 MomentRe.Moment.format("MMM YYYY", m);
+}
 }
 
 let weekstart = (m) => {
@@ -37,7 +40,8 @@ let getAllDatesInTheWeek = (currentDate) => {
 
 
  let date:date = {
- date: day,
+ date: daynumber(day),
+ dateStamp: day,
  weekday: d,
  timeslots: None
  };
@@ -49,7 +53,6 @@ let getAllDatesInTheWeek = (currentDate) => {
 
 dates
 };
-
 
 
 let isTodaysDate = (dateStamp) => {

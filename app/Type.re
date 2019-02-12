@@ -24,8 +24,10 @@ events: events
 type timeslots = option(list(timeslot))
 
 type date = {
-date: MomentRe.Moment.t,
+date: int,
+dateStamp: MomentRe.Moment.t,
 weekday: int,
+weekdayName: string,
 timeslots: timeslots
 }
 

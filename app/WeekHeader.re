@@ -25,12 +25,12 @@ render: (_self) =>
                                     } >
                             <p style=Style.weekDayName >
                             (
-                            ReasonReact.string(Util.dayname(date.date))
+                            ReasonReact.string(date.weekdayName)
                             )
                             </p>
                             <p style=Style.weekDates >
                             (
-                            ReasonReact.string(Util.daydate(date.date))
+                            ReasonReact.string(date.date)
                             )
                             </p>
                          </Col>

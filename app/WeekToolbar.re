@@ -1,5 +1,5 @@
 open Shared;
-open Util;
+
 open Antd;
 
 let component = ReasonReact.statelessComponent("WeekToolbar");

@@ -1,6 +1,5 @@
 open Type;
 open Shared;
-open Util;
 
 
 let component = ReasonReact.reducerComponent("WeekView");
@@ -35,7 +34,7 @@ switch(state.current_event){
 }
 )
 
-    <WeekToolbar appSend=send formattedDate = Util.monthyear(state.startDate) />
+    <WeekToolbar appSend=send formattedDate = Util.Format.monthyear(state.startDate) />
 
     <WeekHeader dates=state.dates />
 
