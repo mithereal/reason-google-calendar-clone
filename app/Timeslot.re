@@ -20,7 +20,7 @@ let make = (~appSend, ~datestamp , ~timeslot: Type.timeslot , _children) => {
     {
 
                      switch(timeslot.events){
-                         | None =>  let ts:Type.new_event = { start: timeslot.time };
+                         | None =>  let ts:Type.newEvent = { start: Some(timeslot.time) };
                          <div style = Style.slotButton onClick=(_event => appSend(NEWEVENT(datestamp, ts))) />
                          | Some(e) =>  <div style = Style.eventButton onClick=(_event => appSend(EVENTMODALOPEN)) />
                                                     }

@@ -26,7 +26,7 @@
     border(px(1), solid, rgb(224,224,224)),
   ]);
 
-  let weekDays = style([
+  let dates = style([
    height(vh(100.)),
   ]);
 

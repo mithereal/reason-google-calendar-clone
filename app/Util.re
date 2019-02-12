@@ -22,11 +22,11 @@ let weekstart = (m) => {
 Moment.startOf(`week, m);
 }
 
-let getAllDaysInTheWeek = (currentDate) => {
+let getAllDatesInTheWeek = (currentDate) => {
 
  let days_list = [0,1,2,3,4,5,6];
 
- let days = List.mapi((index: int, d: int) =>
+ let dates = List.mapi((index: int, d: int) =>
  {
  let day = Moment.startOf(`week, currentDate);
  let duration = duration(d,`days);
@@ -35,12 +35,19 @@ let getAllDaysInTheWeek = (currentDate) => {
  Moment.setMinute(0,day);
  Moment.setHour(0,day);
 
- day
+
+ let date:date = {
+ date: day,
+ weekday: d,
+ timeslots: None
+ };
+
+ date
 }, days_list
  ) ;
 
 
-days
+dates
 };
 
 
@@ -112,27 +119,5 @@ let generateUniqueId = (title, e_start, e_end) => {
 
 let eventExist = (events,time) => {
 false
-}
-
-let addEvent = (allEvents, newEvent) => {
-   let time = MomentRe.Duration.hours(newEvent.eventStart)
-
- let eventWithInfo = () => {
-      ...newEvent ,
-     startWeek: MomentRe.Duration.weeks(newEvent.eventStart),
-     endWeek: MomentRe.Duration.weeks(newEvent.eventEnd)
-
-   }
-
-   let complete_event = eventWithInfo()
-
-   let eventexists = eventExist(allEvents, time)
-
-   let newevents = switch(eventexists){
-   | false => List.append(allEvents, [complete_event])
-   | true => allEvents
-   }
-
-   newevents
 }
 

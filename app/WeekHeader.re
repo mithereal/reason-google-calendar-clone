@@ -3,7 +3,7 @@ open Antd;
 let component = ReasonReact.statelessComponent("WeekHeader");
 
 
-let make = (~weekDays, _children) => {
+let make = (~dates, _children) => {
 ...component,
 render: (_self) =>
 <Row type_="flex">
@@ -12,31 +12,31 @@ render: (_self) =>
                 ReasonReact.array(
                    Array.of_list(
                       List.mapi(
-                        (index: int, m: MomentRe.Moment.t) =>
+                        (index: int, date: Type.date) =>
 
                          <Col
                             key=(string_of_int(index))
                             span=3
                              style={
-                                    switch(Util.isTodaysDate(m)){
-                                    | true =>  Style.weekDaysColSelected
-                                    | false =>  Style.weekDaysCol
+                                    switch(Util.isTodaysDate(date.date)){
+                                    | true =>  Style.datesColSelected
+                                    | false =>  Style.datesCol
                                     }
                                     } >
                             <p style=Style.weekDayName >
                             (
-                            ReasonReact.string(Util.dayname(m))
+                            ReasonReact.string(Util.dayname(date.date))
                             )
                             </p>
                             <p style=Style.weekDates >
                             (
-                            ReasonReact.string(Util.daydate(m))
+                            ReasonReact.string(Util.daydate(date.date))
                             )
                             </p>
                          </Col>
 
                          ,
-                       weekDays,
+                       dates,
                      ),
                  ),
                )

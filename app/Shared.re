@@ -9,11 +9,11 @@ type action =
 | EVENTMODALCLOSE
 | FETCHEVENTS
 | TITLECHANGE(string)
-| NEWEVENT(MomentRe.Moment.t, integer)
+| NEWEVENT(MomentRe.Moment.t, int)
 
 type state = {
 startDate: MomentRe.Moment.t,
-weekDays: weekdays,
+dates: dates,
 showAddEventModal: bool,
 current_event: option(event),
 events: events,
@@ -42,8 +42,8 @@ let reducer = (action, state) => {
                           MomentRe.Moment.setMinute(0,day);
                           MomentRe.Moment.setHour(0,day);
 
-                         let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day))
-                         ReasonReact.Update({...state, startDate: day, weekDays: weekdays})
+                         let dates = Util.getAllDatesInTheWeek(Util.weekstart(day))
+                         ReasonReact.Update({...state, startDate: day, dates: dates})
                      | GOTOPREVIOUSWEEK =>
                         let day = MomentRe.Moment.startOf(`week, state.startDate);
                         let duration = MomentRe.duration(7,`days);
@@ -52,16 +52,16 @@ let reducer = (action, state) => {
                           MomentRe.Moment.setMinute(0,day);
                           MomentRe.Moment.setHour(0,day);
 
-                          let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day))
-                          ReasonReact.Update({...state, startDate: day, weekDays: weekdays})
+                          let dates = Util.getAllDatesInTheWeek(Util.weekstart(day))
+                          ReasonReact.Update({...state, startDate: day, dates: dates})
                      | GOTOTODAY =>
                         let day = MomentRe.momentNow();
-                        let weekdays = Util.getAllDaysInTheWeek(Util.weekstart(day));
-                        ReasonReact.Update({...state, startDate: Util.weekstart(day), weekDays: weekdays})
+                        let dates = Util.getAllDatesInTheWeek(Util.weekstart(day));
+                        ReasonReact.Update({...state, startDate: Util.weekstart(day), dates: dates})
                      | FETCHEVENTS =>
                         let events = None;
-                        let timeslots = Util.times;
-                        ReasonReact.Update({...state, events: None, timeslots: timeslots})
+
+                        ReasonReact.Update({...state, events: events})
                      | TITLECHANGE(t) =>
                         switch(String.length(t) > 0){
                         | false => ReasonReact.Update({...state, current_event: None})

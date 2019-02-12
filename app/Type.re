@@ -17,18 +17,19 @@ endWeek: option(int)
 type events = option(list(event))
 
 type timeslot = {
-time: MomentRe.Moment.t,
+time: int,
 events: events
 }
 
 type timeslots = option(list(timeslot))
 
-type weekday = {
-date: string,
+type date = {
+date: MomentRe.Moment.t,
+weekday: int,
 timeslots: timeslots
 }
 
-type weekdays = list(weekday)
+type dates = list(date)
 
 type coordinate = {
 top: string,

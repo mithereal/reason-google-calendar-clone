@@ -22,13 +22,13 @@ let weekDates = ReactDOMRe.Style.make(
                                       ~marginLeft="10",
                                       ())
 
-let weekDaysColSelected = ReactDOMRe.Style.make(
+let datesColSelected = ReactDOMRe.Style.make(
                                        ~border="#e0e0e0 1px solid",
                                       ~height="100",
                                       ~backgroundColor="rgba(0,0,0,0.04)",
                                       ())
 
-let weekDaysCol = ReactDOMRe.Style.make(
+let datesCol = ReactDOMRe.Style.make(
                                        ~border="#e0e0e0 1px solid",
                                       ~height="100",
                                       ())
