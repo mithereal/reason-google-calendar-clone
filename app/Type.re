@@ -21,6 +21,7 @@ time: int,
 events: events
 }
 
+
 type timeslots = option(list(timeslot))
 
 type date = {

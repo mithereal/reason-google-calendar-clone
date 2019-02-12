@@ -17,7 +17,7 @@ dates: dates,
 showAddEventModal: bool,
 current_event: option(event),
 events: events,
-timeslots: timeslots
+timeslots: option(list(int))
 }
 
 
