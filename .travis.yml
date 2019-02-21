@@ -9,3 +9,7 @@ script:
 cache:
   directories:
     - "node_modules"
+
+notifications:
+  webhooks: "https://www.travisbuddy.com/"
+  on_success: never
