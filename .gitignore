@@ -37,3 +37,4 @@ app/build/*
 # Bower stuff.
 bower_components/
 .merlin
+/.idea/workspace.xml
